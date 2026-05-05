@@ -1,0 +1,2106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Malaysia Holiday Homes Business Guide — KL Short-Term Rentals</title>
+<style>
+  :root {
+    --primary: #0d3b66;
+    --accent: #f4a261;
+    --accent2: #2a9d8f;
+    --bg: #f8f9fa;
+    --card: #ffffff;
+    --text: #1a1a2e;
+    --muted: #6c757d;
+    --success: #2a9d8f;
+    --warning: #e9c46a;
+    --danger: #e76f51;
+    --light-blue: #e8f4f8;
+    --border: #dee2e6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--primary); color: #fff;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2rem; height: 60px; box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+  }
+  nav .logo { font-size: 1.2rem; font-weight: 700; letter-spacing: 0.5px; }
+  nav .logo span { color: var(--accent); }
+  nav ul { display: flex; gap: 0.3rem; list-style: none; flex-wrap: wrap; }
+  nav ul li a {
+    color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.78rem;
+    padding: 0.35rem 0.65rem; border-radius: 6px; transition: all 0.2s;
+    white-space: nowrap;
+  }
+  nav ul li a:hover, nav ul li a.active { background: var(--accent); color: #fff; }
+  .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 4px; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; }
+
+  /* HERO */
+  .hero {
+    margin-top: 60px;
+    background: url('Herobackground.png') center center / cover no-repeat;
+    color: #fff; padding: 5rem 2rem 4rem;
+    text-align: center; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: rgba(5, 15, 40, 0.75);
+  }
+  .hero h1 { font-size: 2.8rem; font-weight: 800; line-height: 1.2; margin-bottom: 1rem; position: relative; }
+  .hero h1 span { color: var(--accent); }
+  .hero p { font-size: 1.15rem; opacity: 0.85; max-width: 640px; margin: 0 auto 2rem; position: relative; }
+  .hero-badges { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; position: relative; }
+  .badge { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 20px; padding: 0.4rem 1rem; font-size: 0.85rem; }
+  .kpi-row { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-top: 3rem; position: relative; }
+  .kpi { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 16px; padding: 1.2rem 2rem; text-align: center; min-width: 140px; }
+  .kpi .num { font-size: 2rem; font-weight: 800; color: var(--accent); }
+  .kpi .lbl { font-size: 0.78rem; opacity: 0.75; margin-top: 0.2rem; }
+
+  /* SECTIONS */
+  section { scroll-margin-top: 70px; padding: 4rem 2rem; max-width: 1100px; margin: 0 auto; }
+  .section-header { text-align: center; margin-bottom: 2.5rem; }
+  .section-header .tag { display: inline-block; background: var(--accent); color: #fff; font-size: 0.72rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 20px; margin-bottom: 0.7rem; }
+  .section-header h2 { font-size: 2rem; font-weight: 800; color: var(--primary); }
+  .section-header p { color: var(--muted); margin-top: 0.5rem; font-size: 0.95rem; }
+
+  /* CARDS */
+  .grid { display: grid; gap: 1.2rem; }
+  .grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+  .grid-3 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  .grid-4 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .card { background: var(--card); border-radius: 16px; padding: 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border: 1px solid var(--border); transition: transform 0.2s; }
+  .card:hover { transform: scale(1.03); }
+  .card .card-icon { font-size: 2rem; margin-bottom: 0.8rem; }
+  .card h3 { font-size: 1.05rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; }
+  .card p { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
+  .card.accent-card { background: linear-gradient(135deg, var(--primary), #1a5276); color: #fff; }
+  .card.accent-card h3, .card.accent-card p { color: #fff; }
+  .card.success-card { border-left: 4px solid var(--success); }
+  .card.warning-card { border-left: 4px solid var(--warning); }
+  .card.danger-card { border-left: 4px solid var(--danger); }
+
+  /* TIMELINE */
+  .timeline { position: relative; padding-left: 2rem; }
+  .timeline::before { content: ''; position: absolute; left: 10px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--accent), var(--accent2)); }
+  .timeline-item { position: relative; margin-bottom: 2rem; }
+  .timeline-item::before { content: ''; position: absolute; left: -1.6rem; top: 0.3rem; width: 14px; height: 14px; border-radius: 50%; background: var(--accent); border: 3px solid #fff; box-shadow: 0 0 0 2px var(--accent); }
+  .timeline-item .tl-header { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.6rem; }
+  .timeline-item .tl-step { background: var(--accent); color: #fff; font-size: 0.7rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 10px; white-space: nowrap; }
+  .timeline-item .tl-time { font-size: 0.75rem; color: var(--muted); }
+  .timeline-item h3 { font-size: 1.05rem; font-weight: 700; color: var(--primary); }
+  .timeline-item .tl-body { background: var(--card); border-radius: 12px; padding: 1.2rem; margin-top: 0.6rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid var(--border); }
+  .timeline-item .tl-body ul { padding-left: 1.2rem; }
+  .timeline-item .tl-body li { font-size: 0.875rem; color: var(--muted); margin-bottom: 0.3rem; line-height: 1.5; }
+  .timeline-item .tl-body .cost-tag { display: inline-block; background: var(--light-blue); color: var(--primary); font-size: 0.78rem; font-weight: 600; padding: 0.25rem 0.7rem; border-radius: 8px; margin-top: 0.6rem; }
+
+  /* TABS */
+  .tabs { margin-bottom: 1.5rem; }
+  .tab-nav { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+  .tab-btn { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 0.5rem 1.1rem; font-size: 0.85rem; cursor: pointer; color: var(--muted); transition: all 0.2s; }
+  .tab-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* PROFIT CALCULATOR */
+  .calc-box { background: var(--card); border-radius: 16px; padding: 2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.07); border: 1px solid var(--border); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .form-group label { display: block; font-size: 0.8rem; font-weight: 600; color: var(--primary); margin-bottom: 0.3rem; }
+  .form-group input, .form-group select { width: 100%; padding: 0.55rem 0.8rem; border: 1px solid var(--border); border-radius: 8px; font-size: 0.9rem; color: var(--text); background: var(--bg); transition: border-color 0.2s; }
+  .form-group input:focus, .form-group select:focus { outline: none; border-color: var(--accent); }
+  .calc-result { background: linear-gradient(135deg, var(--primary), #1a5276); color: #fff; border-radius: 12px; padding: 1.5rem; margin-top: 1.2rem; }
+  .calc-result h3 { margin-bottom: 1rem; font-size: 0.9rem; opacity: 0.8; text-transform: uppercase; letter-spacing: 1px; }
+  .result-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; }
+  .result-item { text-align: center; }
+  .result-item .val { font-size: 1.6rem; font-weight: 800; color: var(--accent); }
+  .result-item .lbl { font-size: 0.75rem; opacity: 0.75; }
+  .btn { background: var(--accent); color: #fff; border: none; border-radius: 8px; padding: 0.65rem 1.5rem; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: background 0.2s; }
+  .btn:hover { background: #e07b3a; }
+  .btn-outline { background: transparent; border: 2px solid var(--accent); color: var(--accent); }
+  .btn-outline:hover { background: var(--accent); color: #fff; }
+
+  /* CHART BAR */
+  .bar-chart { display: flex; flex-direction: column; gap: 0.8rem; }
+  .bar-item { display: flex; align-items: center; gap: 1rem; }
+  .bar-label { font-size: 0.8rem; color: var(--muted); min-width: 110px; text-align: right; }
+  .bar-track { flex: 1; background: var(--light-blue); border-radius: 8px; height: 28px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 8px; display: flex; align-items: center; padding-left: 0.7rem; font-size: 0.75rem; font-weight: 700; color: #fff; transition: width 1s ease; }
+  .bar-val { font-size: 0.8rem; font-weight: 700; color: var(--primary); min-width: 70px; }
+
+  /* CHECKLIST */
+  .checklist { list-style: none; }
+  .checklist li { display: flex; align-items: flex-start; gap: 0.7rem; padding: 0.6rem 0; border-bottom: 1px solid var(--border); font-size: 0.875rem; color: var(--text); }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li .check { width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; font-size: 0.7rem; }
+  .check.done { background: var(--success); color: #fff; }
+  .check.warn { background: var(--warning); color: var(--text); }
+  .check.req { background: var(--primary); color: #fff; }
+
+  /* PROGRESS BAR */
+  .progress-container { margin-bottom: 2rem; }
+  .progress-label { display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 0.4rem; }
+  .progress-bar { height: 8px; background: var(--light-blue); border-radius: 8px; overflow: hidden; }
+  .progress-fill { height: 100%; border-radius: 8px; background: linear-gradient(90deg, var(--accent2), var(--accent)); }
+
+  /* PLATFORM CARDS */
+  .platform-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+  .platform-card { background: var(--card); border-radius: 12px; padding: 1.2rem; border: 1px solid var(--border); text-align: center; transition: transform 0.2s; }
+  .platform-card:hover { transform: scale(1.05); }
+  .platform-card .icon { font-size: 2.2rem; margin-bottom: 0.5rem; }
+  .platform-card .name { font-weight: 700; font-size: 0.95rem; color: var(--primary); }
+  .platform-card .commission { font-size: 0.8rem; color: var(--muted); margin-top: 0.3rem; }
+  .platform-card .tag-row { margin-top: 0.6rem; display: flex; gap: 0.4rem; justify-content: center; flex-wrap: wrap; }
+  .mini-tag { font-size: 0.68rem; padding: 0.2rem 0.5rem; border-radius: 6px; font-weight: 600; }
+  .tag-green { background: #d4edda; color: #155724; }
+  .tag-blue { background: var(--light-blue); color: var(--primary); }
+  .tag-orange { background: #fde8d4; color: #c0440a; }
+
+  /* PITCH DECK */
+  .pitch-card { background: linear-gradient(135deg, #0d3b66 0%, #1a5276 100%); color: #fff; border-radius: 20px; padding: 2.5rem; margin-bottom: 1.5rem; }
+  .pitch-card h3 { font-size: 1.4rem; margin-bottom: 0.5rem; }
+  .pitch-card p { opacity: 0.8; font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem; }
+  .pitch-highlight { background: rgba(244,162,97,0.2); border: 1px solid var(--accent); border-radius: 10px; padding: 1rem; margin-top: 0.8rem; }
+  .pitch-highlight p { opacity: 1; color: var(--accent); font-weight: 600; font-size: 0.95rem; margin: 0; }
+
+  /* TABLE */
+  .data-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+  .data-table th { background: var(--primary); color: #fff; padding: 0.8rem 1rem; text-align: left; font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; }
+  .data-table td { padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .data-table tr:nth-child(even) td { background: var(--bg); }
+  .data-table tr:hover td { background: var(--light-blue); }
+  .table-wrap { overflow-x: auto; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border: 1px solid var(--border); }
+
+  /* STICKY CTA */
+  .sticky-nav { background: var(--primary); }
+
+  /* PHASE INDICATOR */
+  .phases { display: flex; gap: 0; overflow: hidden; border-radius: 12px; margin-bottom: 2rem; }
+  .phase { flex: 1; padding: 1rem; text-align: center; cursor: pointer; border-right: 1px solid rgba(255,255,255,0.2); transition: background 0.2s; }
+  .phase:last-child { border-right: none; }
+  .phase .phase-num { font-size: 0.7rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; opacity: 0.7; }
+  .phase .phase-name { font-size: 0.85rem; font-weight: 600; margin-top: 0.2rem; }
+  .phase.phase-active { background: var(--accent); }
+  .phase.phase-done { background: var(--accent2); }
+  .phase.phase-upcoming { background: rgba(13,59,102,0.3); color: rgba(255,255,255,0.6); }
+
+  /* ALERT */
+  .alert { border-radius: 10px; padding: 1rem 1.2rem; font-size: 0.875rem; margin-bottom: 1rem; display: flex; gap: 0.7rem; align-items: flex-start; }
+  .alert-info { background: var(--light-blue); border-left: 4px solid #1e8bc3; color: var(--primary); }
+  .alert-warn { background: #fff3cd; border-left: 4px solid var(--warning); color: #856404; }
+  .alert-success { background: #d4edda; border-left: 4px solid var(--success); color: #155724; }
+  .alert-icon { font-size: 1.1rem; flex-shrink: 0; }
+
+  /* FOOTER */
+  footer { background: var(--primary); color: rgba(255,255,255,0.7); text-align: center; padding: 2rem; font-size: 0.8rem; margin-top: 4rem; }
+  footer strong { color: var(--accent); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 1.8rem; }
+    nav ul { display: none; }
+    .hamburger { display: flex; }
+    nav ul.open { display: flex; flex-direction: column; position: fixed; top: 60px; left: 0; right: 0; background: var(--primary); padding: 1rem; gap: 0.5rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .phases { flex-direction: column; }
+  }
+
+  /* INTERACTIVE ORBIT MAP */
+  .kl-zones { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.8rem; }
+  .zone-card { border-radius: 12px; padding: 1rem; cursor: pointer; border: 2px solid transparent; transition: all 0.2s; }
+  .zone-card:hover { transform: scale(1.02); }
+  .zone-card.selected { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(244,162,97,0.25); }
+  .zone-name { font-weight: 700; font-size: 0.9rem; margin-bottom: 0.4rem; }
+  .zone-stats { font-size: 0.78rem; opacity: 0.85; line-height: 1.6; }
+
+  /* SCROLL ANIMATE */
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.5s, transform 0.5s; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* ===== NEW INTERACTIVE & ANIMATION ENHANCEMENTS ===== */
+
+  /* Scroll progress bar */
+  .scroll-progress {
+    position: fixed; top: 60px; left: 0; height: 3px; width: 0%;
+    background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent));
+    background-size: 200% 100%; z-index: 999;
+    transition: width 0.1s linear; border-radius: 0 2px 2px 0;
+    animation: progressShimmer 2s linear infinite;
+  }
+  @keyframes progressShimmer {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 200% 0%; }
+  }
+
+  /* KPI animated pop-in */
+  @keyframes kpiPop {
+    0% { transform: scale(0.7) translateY(10px); opacity: 0; }
+    70% { transform: scale(1.06); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  .kpi { animation: kpiPop 0.65s cubic-bezier(0.34,1.56,0.64,1) forwards; opacity: 0; }
+  .kpi:nth-child(1) { animation-delay: 0.1s; }
+  .kpi:nth-child(2) { animation-delay: 0.25s; }
+  .kpi:nth-child(3) { animation-delay: 0.4s; }
+  .kpi:nth-child(4) { animation-delay: 0.55s; }
+  .kpi:nth-child(5) { animation-delay: 0.7s; }
+
+  /* Hero floating orbs */
+  @keyframes floatOrb {
+    0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+    33% { transform: translateY(-25px) rotate(120deg) scale(1.05); }
+    66% { transform: translateY(12px) rotate(240deg) scale(0.97); }
+  }
+  .hero-orb {
+    position: absolute; border-radius: 50%; pointer-events: none;
+  }
+  .hero-orb-1 {
+    width: 320px; height: 320px; right: -80px; top: -60px;
+    background: radial-gradient(circle, rgba(244,162,97,0.18), transparent 70%);
+    animation: floatOrb 9s ease-in-out infinite;
+  }
+  .hero-orb-2 {
+    width: 220px; height: 220px; left: -40px; bottom: -20px;
+    background: radial-gradient(circle, rgba(42,157,143,0.18), transparent 70%);
+    animation: floatOrb 12s ease-in-out infinite 1s reverse;
+  }
+  .hero-orb-3 {
+    width: 160px; height: 160px; left: 20%; top: 30%;
+    background: radial-gradient(circle, rgba(255,255,255,0.08), transparent 70%);
+    animation: floatOrb 14s ease-in-out infinite 2s;
+  }
+  .hero-orb-4 {
+    width: 100px; height: 100px; right: 25%; top: 10%;
+    background: radial-gradient(circle, rgba(244,162,97,0.12), transparent 70%);
+    animation: floatOrb 7s ease-in-out infinite 0.5s;
+  }
+
+  /* Badge pulse */
+  @keyframes badgePulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(244,162,97,0.35); }
+    50% { box-shadow: 0 0 0 5px rgba(244,162,97,0); }
+  }
+  .badge { animation: badgePulse 2.5s ease-in-out infinite; }
+  .badge:nth-child(2) { animation-delay: 0.6s; }
+  .badge:nth-child(3) { animation-delay: 1.2s; }
+  .badge:nth-child(4) { animation-delay: 1.8s; }
+
+  /* Animated timeline dots */
+  @keyframes timelinePulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(244,162,97,0.5), 0 0 0 2px var(--accent); }
+    50% { box-shadow: 0 0 0 8px rgba(244,162,97,0), 0 0 0 2px var(--accent); }
+  }
+  .timeline-item::before { animation: timelinePulse 2s ease-in-out infinite; }
+
+  /* Property showcase */
+  .property-showcase { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem; margin-top: 1.5rem; }
+  .prop-card {
+    border-radius: 20px; overflow: hidden; position: relative; cursor: pointer;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.12); transition: transform 0.35s cubic-bezier(0.34,1.2,0.64,1);
+    min-height: 220px;
+  }
+  .prop-card:hover { transform: scale(1.03); }
+  .prop-img {
+    width: 100%; height: 100%; min-height: 220px; display: flex; align-items: center; justify-content: center;
+    font-size: 5rem; position: relative;
+  }
+  .prop-img-icons {
+    display: flex; flex-direction: column; align-items: center; gap: 0.3rem;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2));
+  }
+  .prop-img-sub { font-size: 1.8rem; opacity: 0.8; }
+  .prop-overlay {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(to top, rgba(13,59,102,0.97) 0%, rgba(13,59,102,0.6) 60%, transparent 100%);
+    padding: 1.8rem 1.2rem 1.2rem;
+    transition: all 0.3s;
+  }
+  .prop-card:hover .prop-overlay { }
+  .prop-overlay .prop-name { color: #fff; font-weight: 700; font-size: 1.05rem; }
+  .prop-overlay .prop-price { color: var(--accent); font-size: 0.9rem; margin-top: 0.3rem; font-weight: 600; }
+  .prop-overlay .prop-rating { color: rgba(255,255,255,0.85); font-size: 0.78rem; margin-top: 0.2rem; }
+  .prop-badge {
+    position: absolute; top: 0.9rem; right: 0.9rem;
+    background: var(--accent); color: #fff; font-size: 0.68rem; font-weight: 700;
+    padding: 0.28rem 0.65rem; border-radius: 12px; letter-spacing: 0.3px;
+    box-shadow: 0 2px 8px rgba(244,162,97,0.4);
+  }
+  .prop-badge.hot { background: #e76f51; }
+  .prop-badge.new { background: var(--accent2); }
+
+  /* Feature icon wrap */
+  .feature-icon-wrap {
+    width: 58px; height: 58px; border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.7rem; margin-bottom: 1rem; transition: transform 0.25s;
+  }
+  .card:hover .feature-icon-wrap { transform: none; }
+
+  /* Stat highlights */
+  .stat-row { display: flex; gap: 1.2rem; flex-wrap: wrap; margin: 2rem 0; }
+  .stat-box {
+    flex: 1; min-width: 130px; background: var(--card); border-radius: 16px;
+    padding: 1.5rem 1rem; text-align: center;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06); border: 1px solid var(--border);
+    position: relative; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .stat-box:hover { transform: scale(1.04); }
+  .stat-box::after {
+    content: ''; position: absolute; top: -15px; right: -15px;
+    width: 60px; height: 60px; border-radius: 50%; opacity: 0.1;
+    background: var(--accent);
+  }
+  .stat-box .stat-num { font-size: 2rem; font-weight: 800; color: var(--primary); line-height: 1; }
+  .stat-box .stat-lbl { font-size: 0.75rem; color: var(--muted); margin-top: 0.4rem; }
+  .stat-box .stat-icon { font-size: 1.4rem; margin-bottom: 0.5rem; }
+
+  /* Back to top */
+  .back-to-top {
+    position: fixed; bottom: 1.8rem; right: 1.8rem; z-index: 200;
+    width: 46px; height: 46px; background: var(--accent); color: #fff;
+    border: none; border-radius: 50%; cursor: pointer; font-size: 1.3rem;
+    box-shadow: 0 4px 16px rgba(244,162,97,0.45); opacity: 0; transform: translateY(20px);
+    transition: all 0.3s; display: flex; align-items: center; justify-content: center;
+    text-decoration: none;
+  }
+  .back-to-top.visible { opacity: 1; transform: translateY(0); }
+  .back-to-top:hover { background: #e07b3a; transform: translateY(-4px); box-shadow: 0 8px 24px rgba(244,162,97,0.55); }
+
+  /* Glowing CTA button */
+  @keyframes btnGlow {
+    0%, 100% { box-shadow: 0 0 10px rgba(244,162,97,0.3), 0 4px 12px rgba(0,0,0,0.15); }
+    50% { box-shadow: 0 0 28px rgba(244,162,97,0.65), 0 4px 12px rgba(0,0,0,0.15); }
+  }
+  .btn-glow { animation: btnGlow 2.5s ease-in-out infinite; }
+
+  /* Platform card icon animation */
+  .platform-card:hover .icon { transform: none; }
+
+  /* Tooltip */
+  [data-tip] { position: relative; }
+  [data-tip]::after {
+    content: attr(data-tip); position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%);
+    background: var(--primary); color: #fff; font-size: 0.72rem; white-space: nowrap;
+    padding: 0.4rem 0.75rem; border-radius: 8px; pointer-events: none;
+    opacity: 0; transition: opacity 0.2s 0.1s; z-index: 50;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+  [data-tip]:hover::after { opacity: 1; }
+
+  /* Floating icon decorations */
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  .float-icon { display: inline-block; animation: float 3s ease-in-out infinite; }
+  .float-icon:nth-child(2) { animation-delay: 0.5s; }
+  .float-icon:nth-child(3) { animation-delay: 1s; }
+
+  /* Hero icon strip */
+  .hero-icons { display: flex; gap: 2rem; justify-content: center; margin-top: 1.5rem; flex-wrap: wrap; opacity: 0.7; }
+  .hero-icon-item { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; font-size: 0.72rem; }
+  .hero-icon-item span:first-child { font-size: 1.8rem; }
+
+  /* Animated number counter */
+  .count-up { display: inline-block; }
+
+  /* Section icon header */
+  .section-icon { font-size: 3rem; margin-bottom: 0.5rem; display: block; }
+
+  /* Stats strip */
+  .stats-strip {
+    background: linear-gradient(135deg, var(--primary) 0%, #1a5276 100%);
+    color: #fff; padding: 2.5rem 2rem;
+  }
+  .stats-strip-inner { max-width: 1100px; margin: 0 auto; display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center; }
+  .strip-stat { text-align: center; min-width: 120px; }
+  .strip-stat .s-num { font-size: 2.4rem; font-weight: 800; color: var(--accent); line-height: 1; }
+  .strip-stat .s-lbl { font-size: 0.78rem; opacity: 0.75; margin-top: 0.3rem; }
+  .strip-stat .s-icon { font-size: 1.4rem; margin-bottom: 0.4rem; display: block; }
+
+  /* Highlight pill */
+  .highlight-pill {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    background: var(--light-blue); border: 1px solid rgba(30,139,195,0.2);
+    color: var(--primary); border-radius: 20px; padding: 0.3rem 0.85rem;
+    font-size: 0.78rem; font-weight: 600; margin: 0.2rem;
+  }
+
+  /* Animated bar chart */
+  .bar-fill { transition: width 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+
+  /* ===== PHOTO GALLERIES ===== */
+
+  /* Location gallery */
+  .location-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.2rem; margin-top: 1.5rem;
+  }
+  .location-card {
+    border-radius: 20px; overflow: hidden; position: relative;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.14); cursor: pointer;
+    transition: transform 0.38s cubic-bezier(0.34,1.2,0.64,1), box-shadow 0.38s;
+  }
+  .location-card:hover { transform: scale(1.03); }
+  .location-card img {
+    width: 100%; height: 250px; object-fit: cover; object-position: center;
+    display: block; transition: transform 0.55s ease;
+  }
+  .location-card:hover img { transform: none; }
+  .location-info {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(to top, rgba(13,59,102,0.97) 0%, rgba(13,59,102,0.55) 55%, transparent 100%);
+    padding: 2.2rem 1.2rem 1.1rem; transition: padding 0.3s;
+  }
+  .location-card:hover .location-info { }
+  .location-info .loc-name { color: #fff; font-weight: 800; font-size: 1.08rem; }
+  .location-info .loc-rate { color: var(--accent); font-size: 0.88rem; font-weight: 600; margin-top: 0.3rem; }
+  .location-info .loc-tags { display: flex; gap: 0.4rem; margin-top: 0.6rem; flex-wrap: wrap; }
+  .loc-tag { background: rgba(255,255,255,0.2); backdrop-filter: blur(4px); color: #fff; font-size: 0.68rem; padding: 0.22rem 0.6rem; border-radius: 10px; border: 1px solid rgba(255,255,255,0.15); }
+  .loc-badge { position: absolute; top: 0.9rem; left: 0.9rem; background: var(--accent); color: #fff; font-size: 0.68rem; font-weight: 700; padding: 0.28rem 0.65rem; border-radius: 12px; letter-spacing: 0.3px; box-shadow: 0 2px 8px rgba(244,162,97,0.4); }
+
+  /* Room gallery */
+  .rooms-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.2rem; margin-top: 1.5rem;
+  }
+  .room-card {
+    border-radius: 20px; overflow: hidden; background: var(--card);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s;
+    border: 1px solid var(--border);
+  }
+  .room-card:hover { transform: scale(1.03); }
+  .room-card img { width: 100%; height: 210px; object-fit: cover; object-position: center; display: block; transition: transform 0.5s ease; }
+  .room-card:hover img { transform: none; }
+  .room-info { padding: 1.2rem; }
+  .room-info .room-type { font-weight: 700; color: var(--primary); font-size: 0.97rem; }
+  .room-info .room-price { color: var(--accent); font-weight: 700; font-size: 0.88rem; margin-top: 0.25rem; }
+  .room-info .room-desc { font-size: 0.8rem; color: var(--muted); margin-top: 0.4rem; line-height: 1.55; }
+  .room-amenities { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.75rem; }
+  .room-amenity { font-size: 0.7rem; background: var(--light-blue); color: var(--primary); padding: 0.22rem 0.55rem; border-radius: 8px; font-weight: 500; }
+
+  /* Updated prop-card for real photos */
+  .prop-img img { width: 100%; height: 100%; min-height: 220px; object-fit: cover; object-position: center; display: block; transition: transform 0.55s ease; }
+  .prop-card:hover .prop-img img { transform: none; }
+  .prop-card { height: 280px; }
+
+  @media (max-width: 768px) {
+    .property-showcase { grid-template-columns: 1fr; }
+    .stat-row { gap: 0.8rem; }
+    .stat-box .stat-num { font-size: 1.6rem; }
+    .hero-orb-3 { display: none; }
+    .location-card img { height: 200px; }
+    .room-card img { height: 175px; }
+    .prop-card { height: 260px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- SCROLL PROGRESS BAR -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">KL <span>Holiday Homes</span> Guide</div>
+  <div class="hamburger" onclick="toggleMenu()" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+  <ul id="navList">
+    <li><a href="#overview" onclick="setActive(this)">Overview</a></li>
+    <li><a href="#company" onclick="setActive(this)">Company Setup</a></li>
+    <li><a href="#licensing" onclick="setActive(this)">Licensing</a></li>
+    <li><a href="#landlords" onclick="setActive(this)">Landlords</a></li>
+    <li><a href="#platforms" onclick="setActive(this)">Platforms</a></li>
+    <li><a href="#operations" onclick="setActive(this)">Operations</a></li>
+    <li><a href="#financials" onclick="setActive(this)">Financials</a></li>
+    <li><a href="#roadmap" onclick="setActive(this)">Roadmap</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <!-- Floating background orbs -->
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-orb hero-orb-3"></div>
+  <div class="hero-orb hero-orb-4"></div>
+
+  <div style="font-size:1.1rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.6rem;position:relative;">Vogue Vacation Homes</div>
+  <h1>Launch Your <span>Holiday Homes</span> Business<br>in Kuala Lumpur</h1>
+  <p>Complete step-by-step blueprint — from company registration to managing a profitable short-term rental portfolio on Airbnb, Booking.com & beyond.</p>
+  <div class="hero-badges">
+    <span class="badge">🇲🇾 Malaysia SSM Registered</span>
+    <span class="badge">🏨 MOTAC Licensed</span>
+    <span class="badge">📊 Profit-Share Model</span>
+    <span class="badge">🌐 Multi-Platform</span>
+  </div>
+
+  <!-- Floating icon strip -->
+  <div class="hero-icons">
+    <div class="hero-icon-item float-icon"><span>🏙️</span><span>KLCC</span></div>
+    <div class="hero-icon-item float-icon"><span>🌿</span><span>Mont Kiara</span></div>
+    <div class="hero-icon-item float-icon"><span>🎰</span><span>Bukit Bintang</span></div>
+    <div class="hero-icon-item float-icon"><span>🌆</span><span>KL Eco City</span></div>
+    <div class="hero-icon-item float-icon"><span>🏡</span><span>Bangsar</span></div>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi" data-tip="Based on AirDNA 2024–2025 market data">
+      <div class="num" data-count="250" data-prefix="RM ">RM 250</div>
+      <div class="lbl">Est. Avg. Nightly Rate (KL)</div>
+    </div>
+    <div class="kpi" data-tip="Average across KLCC, BB & Mont Kiara">
+      <div class="num" data-count="75" data-suffix="%">75%</div>
+      <div class="lbl">KL Avg. Occupancy Rate</div>
+    </div>
+    <div class="kpi">
+      <div class="num">20–25%</div>
+      <div class="lbl">Your Management Cut</div>
+    </div>
+    <div class="kpi" data-tip="Includes SSM, licenses & first unit setup">
+      <div class="num" data-count="5000" data-prefix="~RM ">~RM 5K</div>
+      <div class="lbl">Startup Cost (Min.)</div>
+    </div>
+    <div class="kpi">
+      <div class="num">3–6 mo</div>
+      <div class="lbl">Time to First Profit</div>
+    </div>
+  </div>
+</div>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stats-strip-inner">
+    <div class="strip-stat"><span class="s-icon">✈️</span><div class="s-num count-up" data-count="14" data-suffix="M+">14M+</div><div class="s-lbl">KL International Visitors (2024)</div></div>
+    <div class="strip-stat"><span class="s-icon">🏠</span><div class="s-num count-up" data-count="320" data-prefix="RM ">RM 320</div><div class="s-lbl">Peak Nightly Rate (KLCC)</div></div>
+    <div class="strip-stat"><span class="s-icon">📈</span><div class="s-num count-up" data-count="3" data-suffix="x">3x</div><div class="s-lbl">More vs. Long-Term Rent</div></div>
+    <div class="strip-stat"><span class="s-icon">💰</span><div class="s-num count-up" data-count="8000" data-prefix="RM ">RM 8K</div><div class="s-lbl">Top Unit Monthly Revenue</div></div>
+    <div class="strip-stat"><span class="s-icon">⭐</span><div class="s-num">4.8+</div><div class="s-lbl">Target Star Rating</div></div>
+  </div>
+</div>
+
+<!-- ===================== SECTION 1: OVERVIEW ===================== -->
+<section id="overview">
+  <div class="section-header fade-in">
+    <div class="tag">Section 1</div>
+    <h2>Business Overview & Market Opportunity</h2>
+    <p>Why Kuala Lumpur is one of Southeast Asia's best STR markets right now.</p>
+  </div>
+
+  <div class="grid grid-3 fade-in">
+    <div class="card success-card">
+      <div class="feature-icon-wrap" style="background:rgba(42,157,143,0.18);">🏙️</div>
+      <h3>Why KL?</h3>
+      <p>KL attracted 14M+ international tourists in 2024. KLCC, Bukit Bintang, Mont Kiara & KL Eco City are STR hotspots with consistently high demand and premium nightly rates.</p>
+      <div style="margin-top:0.8rem; display:flex; flex-wrap:wrap; gap:0.3rem;">
+        <span class="highlight-pill">✈️ 14M visitors/yr</span>
+        <span class="highlight-pill">🏆 SEA top-5 city</span>
+      </div>
+    </div>
+    <div class="card warning-card">
+      <div class="feature-icon-wrap" style="background:rgba(233,196,106,0.25);">📈</div>
+      <h3>Market Gap</h3>
+      <p>Most condo owners don't know how to self-manage on Airbnb/Booking.com. They want passive income — you provide full management, they earn without the hassle.</p>
+      <div style="margin-top:0.8rem; display:flex; flex-wrap:wrap; gap:0.3rem;">
+        <span class="highlight-pill">💤 Passive income</span>
+        <span class="highlight-pill">📲 You run it all</span>
+      </div>
+    </div>
+    <div class="card danger-card">
+      <div class="feature-icon-wrap" style="background:rgba(231,111,81,0.18);">🤝</div>
+      <h3>Your Value Prop</h3>
+      <p>You handle everything: listing, pricing, guest communication, cleaning, maintenance. Landlords earn 75–80% of revenue with zero effort.</p>
+      <div style="margin-top:0.8rem; display:flex; flex-wrap:wrap; gap:0.3rem;">
+        <span class="highlight-pill">💰 75–80% to landlord</span>
+        <span class="highlight-pill">⚡ Zero effort needed</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROPERTY SHOWCASE -->
+  <div class="section-header fade-in" style="margin-top:2rem;">
+    <h2 style="font-size:1.4rem;">🏠 KL Prime STR Properties — What You Could Manage</h2>
+    <p>Typical units across KL's top short-term rental zones</p>
+  </div>
+  <div class="property-showcase fade-in">
+    <div class="prop-card">
+      <div class="prop-img">
+        <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=700&q=80" alt="KLCC Luxury Suite interior" loading="lazy">
+      </div>
+      <div class="prop-overlay">
+        <div class="prop-name">KLCC Luxury Suite</div>
+        <div class="prop-price">RM 280–400 / night · 2BR</div>
+        <div class="prop-rating">⭐ 4.9 · 85% occupancy · Petronas view</div>
+      </div>
+      <span class="prop-badge hot">🔥 Top Earner</span>
+    </div>
+    <div class="prop-card">
+      <div class="prop-img">
+        <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=700&q=80" alt="Bukit Bintang modern studio" loading="lazy">
+      </div>
+      <div class="prop-overlay">
+        <div class="prop-name">Bukit Bintang Studio</div>
+        <div class="prop-price">RM 160–260 / night · Studio</div>
+        <div class="prop-rating">⭐ 4.8 · 82% occupancy · City centre</div>
+      </div>
+      <span class="prop-badge">🏙️ High Volume</span>
+    </div>
+    <div class="prop-card">
+      <div class="prop-img">
+        <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=700&q=80" alt="Mont Kiara family condo" loading="lazy">
+      </div>
+      <div class="prop-overlay">
+        <div class="prop-name">Mont Kiara Family Condo</div>
+        <div class="prop-price">RM 200–300 / night · 3BR</div>
+        <div class="prop-rating">⭐ 4.7 · 74% occupancy · Expat favourite</div>
+      </div>
+      <span class="prop-badge new">🌿 Steady Demand</span>
+    </div>
+    <div class="prop-card">
+      <div class="prop-img">
+        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=700&q=80" alt="KL Eco City corporate apartment" loading="lazy">
+      </div>
+      <div class="prop-overlay">
+        <div class="prop-name">KL Eco City Corporate</div>
+        <div class="prop-price">RM 180–250 / night · 1BR</div>
+        <div class="prop-rating">⭐ 4.8 · 76% occupancy · MNC travellers</div>
+      </div>
+      <span class="prop-badge new">💼 Corporate Pick</span>
+    </div>
+  </div>
+
+  <!-- KL LOCATIONS GALLERY -->
+  <div class="section-header fade-in" style="margin-top:3rem;">
+    <h2 style="font-size:1.4rem;">📍 KL Neighbourhoods — Where You'll Operate</h2>
+    <p>Explore the top short-term rental zones across Kuala Lumpur</p>
+  </div>
+  <div class="location-gallery fade-in">
+    <div class="location-card">
+      <img src="https://images.unsplash.com/photo-1555899434-94d1368aa7af?auto=format&fit=crop&w=700&q=80" alt="KLCC Petronas Twin Towers Kuala Lumpur" loading="lazy">
+      <div class="location-info">
+        <div class="loc-name">🏢 KLCC / Ampang</div>
+        <div class="loc-rate">RM 280–400/night · 80–85% occupancy</div>
+        <div class="loc-tags">
+          <span class="loc-tag">Petronas Towers</span>
+          <span class="loc-tag">Luxury</span>
+          <span class="loc-tag">Top Demand</span>
+        </div>
+      </div>
+      <span class="loc-badge">🔥 #1 Zone</span>
+    </div>
+    <div class="location-card">
+      <img src="https://images.unsplash.com/photo-1596422846543-75c6fc197f07?auto=format&fit=crop&w=700&q=80" alt="Kuala Lumpur skyline" loading="lazy">
+      <div class="location-info">
+        <div class="loc-name">🎰 Bukit Bintang</div>
+        <div class="loc-rate">RM 200–300/night · 77–82% occupancy</div>
+        <div class="loc-tags">
+          <span class="loc-tag">Entertainment hub</span>
+          <span class="loc-tag">High footfall</span>
+          <span class="loc-tag">Tourism</span>
+        </div>
+      </div>
+    </div>
+    <div class="location-card">
+      <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=700&q=80" alt="Modern residential Kuala Lumpur" loading="lazy">
+      <div class="location-info">
+        <div class="loc-name">🌿 Mont Kiara</div>
+        <div class="loc-rate">RM 200–280/night · 70–75% occupancy</div>
+        <div class="loc-tags">
+          <span class="loc-tag">Expat community</span>
+          <span class="loc-tag">Family-friendly</span>
+          <span class="loc-tag">Green</span>
+        </div>
+      </div>
+    </div>
+    <div class="location-card">
+      <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=700&q=80" alt="Modern KL city buildings" loading="lazy">
+      <div class="location-info">
+        <div class="loc-name">🌆 KL Eco City</div>
+        <div class="loc-rate">RM 180–260/night · 72–76% occupancy</div>
+        <div class="loc-tags">
+          <span class="loc-tag">Corporate stays</span>
+          <span class="loc-tag">MNC cluster</span>
+          <span class="loc-tag">Modern</span>
+        </div>
+      </div>
+    </div>
+    <div class="location-card">
+      <img src="https://images.unsplash.com/photo-1508009603885-50cf7c579365?auto=format&fit=crop&w=700&q=80" alt="Kuala Lumpur at night" loading="lazy">
+      <div class="location-info">
+        <div class="loc-name">🍷 Bangsar</div>
+        <div class="loc-rate">RM 170–240/night · 68–73% occupancy</div>
+        <div class="loc-tags">
+          <span class="loc-tag">F&amp;B scene</span>
+          <span class="loc-tag">Trendy</span>
+          <span class="loc-tag">Lifestyle</span>
+        </div>
+      </div>
+    </div>
+    <div class="location-card">
+      <img src="https://images.unsplash.com/photo-1541480601022-2308c0f02487?auto=format&fit=crop&w=700&q=80" alt="KL modern architecture" loading="lazy">
+      <div class="location-info">
+        <div class="loc-name">🏘️ Chow Kit / Pandan Perdana</div>
+        <div class="loc-rate">RM 100–160/night · 65–70% occupancy</div>
+        <div class="loc-tags">
+          <span class="loc-tag">Budget travellers</span>
+          <span class="loc-tag">Low cost entry</span>
+          <span class="loc-tag">Growing</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROOM TYPES GALLERY -->
+  <div class="section-header fade-in" style="margin-top:3rem;">
+    <h2 style="font-size:1.4rem;">🛏️ Room Types You'll Manage</h2>
+    <p>From studios to luxury penthouses — every type earns differently</p>
+  </div>
+  <div class="rooms-grid fade-in">
+    <div class="room-card">
+      <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=600&q=80" alt="Modern studio apartment" loading="lazy">
+      <div class="room-info">
+        <div class="room-type">🏠 Studio / Soho</div>
+        <div class="room-price">RM 120–200 / night</div>
+        <div class="room-desc">Compact, high-turnover. Easy to clean, low setup cost. Ideal for solo travellers and short-stay guests.</div>
+        <div class="room-amenities">
+          <span class="room-amenity">👤 1–2 guests</span>
+          <span class="room-amenity">💨 AC</span>
+          <span class="room-amenity">📶 WiFi</span>
+          <span class="room-amenity">🍳 Kitchenette</span>
+        </div>
+      </div>
+    </div>
+    <div class="room-card">
+      <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=600&q=80" alt="1-bedroom apartment luxury" loading="lazy">
+      <div class="room-info">
+        <div class="room-type">🛏️ 1-Bedroom Apartment</div>
+        <div class="room-price">RM 180–320 / night</div>
+        <div class="room-desc">Most common STR unit. Couples and business travellers. Sweet spot of price vs. demand in KLCC and Bukit Bintang.</div>
+        <div class="room-amenities">
+          <span class="room-amenity">👥 1–3 guests</span>
+          <span class="room-amenity">🛁 En-suite</span>
+          <span class="room-amenity">🍳 Full kitchen</span>
+          <span class="room-amenity">🅿️ Parking</span>
+        </div>
+      </div>
+    </div>
+    <div class="room-card">
+      <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=600&q=80" alt="2-bedroom family apartment" loading="lazy">
+      <div class="room-info">
+        <div class="room-type">🛏️🛏️ 2-Bedroom Apartment</div>
+        <div class="room-price">RM 250–420 / night</div>
+        <div class="room-desc">Families and groups. Higher absolute revenue. Very popular with Asian tourists visiting KL in groups of 3–4.</div>
+        <div class="room-amenities">
+          <span class="room-amenity">👨‍👩‍👧 2–5 guests</span>
+          <span class="room-amenity">🛁 2 bathrooms</span>
+          <span class="room-amenity">🏊 Pool access</span>
+          <span class="room-amenity">🏋️ Gym</span>
+        </div>
+      </div>
+    </div>
+    <div class="room-card">
+      <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?auto=format&fit=crop&w=600&q=80" alt="Luxury penthouse KL" loading="lazy">
+      <div class="room-info">
+        <div class="room-type">👑 Penthouse / Duplex</div>
+        <div class="room-price">RM 600–1,500 / night</div>
+        <div class="room-desc">Premium segment. Lower occupancy but very high ADR. Targets luxury travellers, corporate retreats, and special occasions.</div>
+        <div class="room-amenities">
+          <span class="room-amenity">🌟 VIP guests</span>
+          <span class="room-amenity">🏙️ City view</span>
+          <span class="room-amenity">🛁 Jacuzzi</span>
+          <span class="room-amenity">🍾 High-end</span>
+        </div>
+      </div>
+    </div>
+    <div class="room-card">
+      <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=600&q=80" alt="Rooftop pool condo amenity" loading="lazy">
+      <div class="room-info">
+        <div class="room-type">🏊 Pool-View / Resort Condo</div>
+        <div class="room-price">RM 220–380 / night</div>
+        <div class="room-desc">Units with pool or city view command a 20–30% premium. Photos sell these listings — photography ROI is highest here.</div>
+        <div class="room-amenities">
+          <span class="room-amenity">🌅 View unit</span>
+          <span class="room-amenity">🏊 Pool</span>
+          <span class="room-amenity">📸 Photo-worthy</span>
+          <span class="room-amenity">⬆️ High ADR</span>
+        </div>
+      </div>
+    </div>
+    <div class="room-card">
+      <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=600&q=80" alt="Modern full kitchen apartment" loading="lazy">
+      <div class="room-info">
+        <div class="room-type">🍳 Serviced Apartment (Long Stay)</div>
+        <div class="room-price">RM 3,500–8,000 / month</div>
+        <div class="room-desc">7–30 day stays. Corporate relocation, digital nomads. Lower effort per stay, predictable revenue. Great for slower months.</div>
+        <div class="room-amenities">
+          <span class="room-amenity">📅 7–30 nights</span>
+          <span class="room-amenity">💼 Corporate</span>
+          <span class="room-amenity">🍳 Full kitchen</span>
+          <span class="room-amenity">🔄 Predictable</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-2 fade-in" style="margin-top:1.5rem;">
+    <div class="card">
+      <h3 style="margin-bottom:1rem; color:var(--primary);">📊 KL Top STR Zones — Average Nightly Revenue</h3>
+      <div class="bar-chart">
+        <div class="bar-item">
+          <div class="bar-label">KLCC</div>
+          <div class="bar-track"><div class="bar-fill" style="width:90%; background: linear-gradient(90deg, #0d3b66, #1e8bc3);">RM 320</div></div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-label">Bukit Bintang</div>
+          <div class="bar-track"><div class="bar-fill" style="width:78%; background: linear-gradient(90deg, #f4a261, #e76f51);">RM 280</div></div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-label">Mont Kiara</div>
+          <div class="bar-track"><div class="bar-fill" style="width:65%; background: linear-gradient(90deg, #2a9d8f, #264653);">RM 240</div></div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-label">KL Eco City</div>
+          <div class="bar-track"><div class="bar-fill" style="width:60%; background: linear-gradient(90deg, #e9c46a, #f4a261);">RM 210</div></div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-label">Bangsar</div>
+          <div class="bar-track"><div class="bar-fill" style="width:55%; background: linear-gradient(90deg, #6c757d, #495057);">RM 190</div></div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-label">Chow Kit/PP</div>
+          <div class="bar-track"><div class="bar-fill" style="width:40%; background: linear-gradient(90deg, #495057, #212529);">RM 130</div></div>
+        </div>
+      </div>
+      <p style="font-size:0.75rem;color:var(--muted);margin-top:0.8rem;">* Estimated averages. Source: AirDNA/local market data 2024–2025</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-bottom:1rem; color:var(--primary);">🏠 KL Prime Zones — Click to Explore</h3>
+      <div class="kl-zones">
+        <div class="zone-card selected" style="background:#e8f4f8;" onclick="selectZone(this,'klcc')" id="zone-klcc">
+          <div class="zone-name">🏢 KLCC / Ampang</div>
+          <div class="zone-stats" id="stats-klcc">Occupancy: 80%<br>Avg/night: RM 320<br>Competition: High<br>Best for: Luxury</div>
+        </div>
+        <div class="zone-card" style="background:#fde8d4;" onclick="selectZone(this,'bukit')" id="zone-bukit">
+          <div class="zone-name">🎰 Bukit Bintang</div>
+          <div class="zone-stats" id="stats-bukit">Occupancy: 77%<br>Avg/night: RM 280<br>Competition: High<br>Best for: Tourism</div>
+        </div>
+        <div class="zone-card" style="background:#d4edda;" onclick="selectZone(this,'mont')" id="zone-mont">
+          <div class="zone-name">🌿 Mont Kiara</div>
+          <div class="zone-stats" id="stats-mont">Occupancy: 70%<br>Avg/night: RM 240<br>Competition: Medium<br>Best for: Expats</div>
+        </div>
+        <div class="zone-card" style="background:#fff3cd;" onclick="selectZone(this,'eco')" id="zone-eco">
+          <div class="zone-name">🌆 KL Eco City</div>
+          <div class="zone-stats" id="stats-eco">Occupancy: 72%<br>Avg/night: RM 210<br>Competition: Low<br>Best for: Corporate</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SECTION 2: COMPANY SETUP ===================== -->
+<section id="company" style="background: var(--bg);">
+  <div class="section-header fade-in">
+    <div class="tag">Section 2</div>
+    <h2>Company Registration in Malaysia</h2>
+    <p>Register with SSM (Companies Commission of Malaysia) — choose the right structure for growth.</p>
+  </div>
+
+  <div class="tabs fade-in">
+    <div class="tab-nav">
+      <button class="tab-btn active" onclick="switchTab('t1','company-tabs')">🏛️ Sole Proprietorship</button>
+      <button class="tab-btn" onclick="switchTab('t2','company-tabs')">👥 Partnership</button>
+      <button class="tab-btn" onclick="switchTab('t3','company-tabs')">⭐ Sdn Bhd (Recommended)</button>
+    </div>
+    <div id="company-tabs">
+      <div class="tab-content active" id="t1">
+        <div class="grid grid-3">
+          <div class="card success-card"><h3>✅ Pros</h3><p>Cheapest & fastest to set up (RM60–100). Minimal compliance. Good for testing the concept with 1–2 units.</p></div>
+          <div class="card danger-card"><h3>❌ Cons</h3><p>Personal liability — your personal assets are at risk. Harder to get bank loans or attract partners. Cannot have shareholders.</p></div>
+          <div class="card warning-card"><h3>📋 Requirements</h3><p>Malaysian citizen / PR only. Register at SSM office or MyCoID portal. Business name approval. Annual renewal RM60.</p></div>
+        </div>
+      </div>
+      <div class="tab-content" id="t2">
+        <div class="grid grid-3">
+          <div class="card success-card"><h3>✅ Pros</h3><p>Shared capital & responsibilities. Good if founding with a partner. Low setup cost (RM100–200).</p></div>
+          <div class="card danger-card"><h3>❌ Cons</h3><p>Joint & several liability. All partners personally liable. Disputes can be complicated without a partnership deed.</p></div>
+          <div class="card warning-card"><h3>📋 Requirements</h3><p>2–20 partners. Partnership agreement recommended. Register at SSM. Each partner must be Malaysian/PR.</p></div>
+        </div>
+      </div>
+      <div class="tab-content" id="t3">
+        <div class="grid grid-3">
+          <div class="card success-card"><h3>✅ Pros</h3><p>Limited liability — personal assets protected. Professional image. Easier to raise capital, get bank loans, hire staff. Foreigners can participate (as shareholders). Best for scaling.</p></div>
+          <div class="card danger-card"><h3>❌ Cons</h3><p>More compliance: audited accounts, annual returns, company secretary required. Higher setup cost ~RM1,500–3,000. SSM annual fees apply.</p></div>
+          <div class="card warning-card"><h3>📋 Requirements</h3><p>Min. 1 director (Malaysian resident). Min. 1 shareholder. Paid-up capital: RM1 minimum (recommend RM50,000+). Licensed Company Secretary needed. Register via MyCoID or SSM.</p></div>
+        </div>
+        <div class="alert alert-success" style="margin-top:1rem;">
+          <span class="alert-icon">⭐</span>
+          <div><strong>Our Recommendation: Sdn Bhd</strong> — For a professional holiday homes company managing multiple units with landlord agreements, Sdn Bhd is essential. It protects you legally, looks credible to landlords and banks, and allows future funding or partnerships.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header fade-in" style="margin-top: 2rem;">
+    <h2 style="font-size:1.4rem;">Step-by-Step: Registering Your Sdn Bhd</h2>
+  </div>
+
+  <div class="timeline fade-in">
+    <div class="timeline-item">
+      <div class="tl-header">
+        <span class="tl-step">Step 1</span>
+        <span class="tl-time">Day 1 — 30 min</span>
+      </div>
+      <h3>Reserve Your Company Name</h3>
+      <div class="tl-body">
+        <ul>
+          <li>Visit SSM office at Menara SSM@Sentral, KL</li>
+          <li>Search for name availability. Suggest names like <em>"Vogue Vacation Homes SDN BHD"</em> or <em>"Vogue Stays Vacation Homes SDN BHD"</em></li>
+          <li>Avoid generic terms like "Malaysia", "Royal", "International" without approval</li>
+          <li>Submit 3 name options (SSM picks first available)</li>
+        </ul>
+        <span class="cost-tag">💰 Cost: RM30 per name search</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="tl-header">
+        <span class="tl-step">Step 2</span>
+        <span class="tl-time">Day 1–3</span>
+      </div>
+      <h3>Prepare Incorporation Documents</h3>
+      <div class="tl-body">
+        <ul>
+          <li>MyKad/Passport copies of all directors & shareholders</li>
+          <li>Proposed registered address (can use company secretary's address initially)</li>
+          <li>Memorandum & Articles of Association (M&A) or Constitution</li>
+          <li>Business nature code: <strong>55101 – Short-term accommodation activities</strong></li>
+          <li>Share structure (e.g., 1,000 shares at RM1 each = RM1,000 paid-up)</li>
+        </ul>
+        <span class="cost-tag">💰 Cost: RM0 (preparation)</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="tl-header">
+        <span class="tl-step">Step 3</span>
+        <span class="tl-time">Day 1–2 (online) or Day 5 (manual)</span>
+      </div>
+      <h3>Incorporate via MyCoID Portal</h3>
+      <div class="tl-body">
+        <ul>
+          <li>File <strong>Form 1 (Incorporation of Company)</strong></li>
+          <li>Alternatively use a <strong>Company Secretary</strong> (faster and they handle all paperwork)</li>
+          <li>Processing time: 1–3 working days online</li>
+          <li>You'll receive a <strong>Certificate of Incorporation</strong> digitally</li>
+        </ul>
+        <span class="cost-tag">💰 SSM Fee: RM1,010 for Sdn Bhd (up to RM2,500 paid-up capital) | Secretary fee: RM1,500–3,000</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="tl-header">
+        <span class="tl-step">Step 4</span>
+        <span class="tl-time">Week 1–2</span>
+      </div>
+      <h3>Open a Business Bank Account</h3>
+      <div class="tl-body">
+        <ul>
+          <li>Bring: Certificate of Incorporation, M&A, Board Resolution, IC of directors</li>
+          <li>Recommended: <strong>Maybank, CIMB, or RHB</strong> — all have good SME banking packages</li>
+          <li>Consider <strong>Wise Business</strong> or <strong>Payoneer</strong> for receiving Airbnb/Booking.com payouts in USD/GBP</li>
+          <li>Open a separate account for collecting guest payments</li>
+        </ul>
+        <span class="cost-tag">💰 Cost: RM0 (min. deposit varies: RM500–2,000)</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="tl-header">
+        <span class="tl-step">Step 5</span>
+        <span class="tl-time">Week 2–3</span>
+      </div>
+      <h3>Register for Tax</h3>
+      <div class="tl-body">
+        <ul>
+          <li>Register with <strong>LHDN (Inland Revenue Board)</strong> for corporate income tax — Form CP600</li>
+          <li>Register for <strong>Tourism Tax (TTx)</strong> at LHDN — mandatory if hosting foreign guests (RM2.50/room/night)</li>
+          <li>Register for <strong>Service Tax</strong> ONLY if annual revenue exceeds RM500,000</li>
+          <li>Tip: Use an accountant from Day 1 — saves headaches later (RM300–600/month)</li>
+        </ul>
+        <span class="cost-tag">💰 Cost: RM0 (registration free)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card fade-in" style="margin-top:1rem; background: var(--light-blue);">
+    <h3>📋 Total Company Setup Checklist</h3>
+    <ul class="checklist" style="margin-top:1rem;">
+      <li><span class="check req">1</span> Company name reserved & approved</li>
+      <li><span class="check req">2</span> Sdn Bhd incorporated (Certificate received)</li>
+      <li><span class="check req">3</span> Company Secretary appointed</li>
+      <li><span class="check req">4</span> Business bank account opened</li>
+      <li><span class="check req">5</span> LHDN income tax registration</li>
+      <li><span class="check req">6</span> Tourism Tax (TTx) registration at LHDN</li>
+      <li><span class="check warn">7</span> EPF/SOCSO registration (when hiring staff)</li>
+      <li><span class="check warn">8</span> Service Tax registration (if >RM500K revenue)</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===================== SECTION 3: LICENSING ===================== -->
+<section id="licensing">
+  <div class="section-header fade-in">
+    <div class="tag">Section 3</div>
+    <h2>Licenses & Compliance</h2>
+    <p>Navigate Malaysia's regulatory landscape for short-term accommodation businesses.</p>
+  </div>
+
+  <div class="alert alert-warn fade-in">
+    <span class="alert-icon">⚠️</span>
+    <div><strong>Important:</strong> Malaysia's STR regulations are evolving. Some condominiums and local councils have restrictions on short-term rentals. Always verify the condo by-laws and local council rules for each property before signing any management agreement.</div>
+  </div>
+
+  <div class="grid grid-2 fade-in">
+    <div class="card">
+      <div class="card-icon">🏛️</div>
+      <h3>1. MOTAC — Ministry of Tourism License</h3>
+      <p style="margin-bottom:0.8rem;">The most important license. Properties offering accommodation must register with MOTAC under the <strong>Tourism Industry Act 1992</strong>.</p>
+      <ul class="checklist">
+        <li><span class="check req">A</span> Register as a <strong>Tourist Accommodation Premises</strong> (TAP)</li>
+        <li><span class="check req">B</span> Complete Form PL-10 (Tourism premises registration)</li>
+        <li><span class="check req">C</span> Physical inspection by MOTAC officer</li>
+        <li><span class="check req">D</span> Pay registration fee (RM100–500 depending on category)</li>
+        <li><span class="check req">E</span> Renew annually</li>
+      </ul>
+      <p style="font-size:0.78rem;margin-top:0.8rem;color:var(--muted);">Portal: <strong>eservices.motac.gov.my</strong></p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🏙️</div>
+      <h3>2. DBKL — Business Premises License</h3>
+      <p style="margin-bottom:0.8rem;">Dewan Bandaraya Kuala Lumpur issues the local business operating license. Required for any commercial activity in KL.</p>
+      <ul class="checklist">
+        <li><span class="check req">A</span> Apply at DBKL One-Stop Centre or <strong>eDBKL portal</strong></li>
+          <li><span class="check req">B</span> Submit: SSM Certificate, tenancy agreement, floor plan</li>
+          <li><span class="check req">C</span> DBKL premises inspection</li>
+          <li><span class="check req">D</span> Annual license fee: RM100–500/year for office/admin premises</li>
+          <li><span class="check warn">E</span> Note: Each managed unit is NOT a separate business premises — your management office needs the license</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-icon">💰</div>
+      <h3>3. Tourism Tax (TTx) Collection</h3>
+      <p style="margin-bottom:0.8rem;">Under the <strong>Tourism Tax Act 2017</strong>, you must collect RM2.50 per room per night from foreign guests and remit monthly to LHDN.</p>
+      <ul class="checklist">
+        <li><span class="check req">A</span> Register at LHDN MyTax portal as a registered premises</li>
+        <li><span class="check req">B</span> Issue TTx receipts to foreign guests</li>
+        <li><span class="check req">C</span> Submit monthly TTx returns by 15th of following month</li>
+        <li><span class="check done">D</span> Note: Airbnb/Booking.com now collect TTx automatically for some bookings — verify with platform</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔒</div>
+      <h3>4. PDPA — Personal Data Protection</h3>
+      <p style="margin-bottom:0.8rem;">The <strong>Personal Data Protection Act 2010</strong> applies when collecting guest data. Fines up to RM300,000 for violations.</p>
+      <ul class="checklist">
+        <li><span class="check req">A</span> Create a Privacy Policy for your website & listings</li>
+        <li><span class="check req">B</span> Secure guest passport/IC data — use encrypted storage</li>
+        <li><span class="check req">C</span> Don't share guest data with third parties without consent</li>
+        <li><span class="check warn">D</span> Register as Data User with JPDP if processing commercial data</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card fade-in" style="margin-top:1.5rem;">
+    <h3 style="margin-bottom:1rem;">💡 Condo By-Laws — Critical Due Diligence</h3>
+    <div class="grid grid-3">
+      <div style="padding:1rem; background:#d4edda; border-radius:10px;">
+        <strong style="color:#155724;">✅ STR-Friendly Buildings</strong>
+        <ul style="margin-top:0.5rem;font-size:0.8rem;padding-left:1rem;">
+          <li>Regalia Residences</li>
+          <li>Dorsett Residences</li>
+          <li>Pacific Suites KLCC</li>
+          <li>Vortex Suites</li>
+          <li>The Robertson</li>
+        </ul>
+        <p style="font-size:0.75rem;margin-top:0.5rem;color:var(--muted);">These are known to allow/tolerate STR</p>
+      </div>
+      <div style="padding:1rem; background:#fff3cd; border-radius:10px;">
+        <strong style="color:#856404;">⚠️ Check Carefully</strong>
+        <ul style="margin-top:0.5rem;font-size:0.8rem;padding-left:1rem;">
+          <li>Owners must declare to JMB</li>
+          <li>Min. 3-night stay policies</li>
+          <li>Guest registration required</li>
+          <li>Amenity booking limits</li>
+        </ul>
+        <p style="font-size:0.75rem;margin-top:0.5rem;color:var(--muted);">Varies by building — always verify JMB rules</p>
+      </div>
+      <div style="padding:1rem; background:#f8d7da; border-radius:10px;">
+        <strong style="color:#721c24;">❌ Avoid Without Clarity</strong>
+        <ul style="margin-top:0.5rem;font-size:0.8rem;padding-left:1rem;">
+          <li>Buildings with explicit STR bans</li>
+          <li>Residential-zoned properties</li>
+          <li>JMB actively enforcing bans</li>
+          <li>Landed property in restricted areas</li>
+        </ul>
+        <p style="font-size:0.75rem;margin-top:0.5rem;color:var(--muted);">Legal risk to landlord and you</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="table-wrap fade-in" style="margin-top:1.5rem;">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>License / Registration</th>
+          <th>Authority</th>
+          <th>Cost</th>
+          <th>Timeline</th>
+          <th>Renewal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>SSM — Sdn Bhd Incorporation</td><td>SSM</td><td>RM 1,010+</td><td>1–3 days</td><td>Annual return ~RM150</td></tr>
+        <tr><td>MOTAC Tourism Premises</td><td>MOTAC</td><td>RM 100–500</td><td>2–4 weeks</td><td>Annual</td></tr>
+        <tr><td>DBKL Business Premises</td><td>DBKL</td><td>RM 100–500/yr</td><td>2–3 weeks</td><td>Annual</td></tr>
+        <tr><td>Tourism Tax (TTx) Registration</td><td>LHDN</td><td>Free</td><td>1 week</td><td>Monthly filing</td></tr>
+        <tr><td>Income Tax Registration</td><td>LHDN</td><td>Free</td><td>1–2 weeks</td><td>Annual return</td></tr>
+        <tr><td>PDPA Data User Registration</td><td>JPDP</td><td>RM 200</td><td>1–2 weeks</td><td>As needed</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===================== SECTION 4: LANDLORDS ===================== -->
+<section id="landlords" style="background: var(--bg);">
+  <div class="section-header fade-in">
+    <div class="tag">Section 4</div>
+    <h2>Getting Landlords to Hand You Their Units</h2>
+    <p>Your landlord acquisition strategy — the most critical growth lever in your business.</p>
+  </div>
+
+  <div class="pitch-card fade-in">
+    <h3>Your Pitch to Landlords in One Sentence</h3>
+    <p>Most landlords are earning RM1,500–2,500/month from long-term tenants. With STR management, the same unit can earn RM4,000–8,000/month — and they do absolutely nothing.</p>
+    <div class="pitch-highlight">
+      <p>"We manage your unit like a hotel. You earn 2–3x more than a regular tenant. We handle guests, cleaning, maintenance, and all platforms. You just receive monthly bank transfers."</p>
+    </div>
+  </div>
+
+  <div class="grid grid-2 fade-in">
+    <div class="card">
+      <h3 style="margin-bottom:1rem;">🎯 Where to Find Landlords</h3>
+      <div class="bar-chart">
+        <div class="bar-item">
+          <div class="bar-label">Facebook Groups</div>
+          <div class="bar-track"><div class="bar-fill" style="width:88%; background:linear-gradient(90deg,#0d3b66,#1e8bc3);">High</div></div>
+          <div class="bar-val">★★★★★</div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-label">PropertyGuru</div>
+          <div class="bar-track"><div class="bar-fill" style="width:75%; background:linear-gradient(90deg,#f4a261,#e76f51);">High</div></div>
+          <div class="bar-val">★★★★</div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-label">iProperty.com.my</div>
+          <div class="bar-track"><div class="bar-fill" style="width:70%; background:linear-gradient(90deg,#2a9d8f,#264653);">Good</div></div>
+          <div class="bar-val">★★★★</div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-label">Cold Call/Visit</div>
+          <div class="bar-track"><div class="bar-fill" style="width:60%; background:linear-gradient(90deg,#e9c46a,#f4a261);">Medium</div></div>
+          <div class="bar-val">★★★</div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-label">Agent Referrals</div>
+          <div class="bar-track"><div class="bar-fill" style="width:55%; background:linear-gradient(90deg,#6c757d,#495057);">Medium</div></div>
+          <div class="bar-val">★★★</div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-label">Word of Mouth</div>
+          <div class="bar-track"><div class="bar-fill" style="width:95%; background:linear-gradient(90deg,#155724,#2a9d8f);">Best</div></div>
+          <div class="bar-val">★★★★★</div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <h3 style="margin-bottom:1rem;">📱 Facebook Groups to Target</h3>
+      <ul class="checklist">
+        <li><span class="check req">🔵</span> "KL Property Investors Malaysia"</li>
+        <li><span class="check req">🔵</span> "KLCC Condo Owners & Investors"</li>
+        <li><span class="check req">🔵</span> "Mont Kiara Property Owners"</li>
+        <li><span class="check req">🔵</span> "Malaysia Property Talk"</li>
+        <li><span class="check req">🔵</span> "Airbnb Malaysia Hosts Community"</li>
+        <li><span class="check req">🔵</span> "KL Real Estate Investors Network"</li>
+        <li><span class="check req">🔵</span> Local condo-specific WhatsApp/Telegram groups</li>
+        <li><span class="check warn">💡</span> Post: "We're looking for property owners in [building name] to partner with us for short-term rental management. Guaranteed 3x more income."</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-header fade-in" style="margin-top:2rem;">
+    <h2 style="font-size:1.4rem;">The Profit-Sharing Models</h2>
+  </div>
+
+  <div class="tabs fade-in">
+    <div class="tab-nav">
+      <button class="tab-btn active" onclick="switchTab('m1','model-tabs')">Model A: Revenue Share</button>
+      <button class="tab-btn" onclick="switchTab('m2','model-tabs')">Model B: Guaranteed Rent</button>
+      <button class="tab-btn" onclick="switchTab('m3','model-tabs')">Model C: Hybrid</button>
+    </div>
+    <div id="model-tabs">
+      <div class="tab-content active" id="m1">
+        <div class="grid grid-2">
+          <div class="card success-card">
+            <h3>Revenue Share (Most Common)</h3>
+            <p>You take 20–25% of gross booking revenue. Landlord gets 75–80%. No guaranteed minimum. Best when trust is established.</p>
+            <div style="margin-top:1rem; background:rgba(255,255,255,0.15); border-radius:8px; padding:1rem;">
+              <div style="font-size:0.8rem; margin-bottom:0.5rem;">Example: Unit earns RM8,000/month</div>
+              <div style="display:flex; justify-content:space-between; font-size:0.9rem;">
+                <span>Your cut (25%): <strong>RM 2,000</strong></span>
+                <span>Landlord (75%): <strong>RM 6,000</strong></span>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <h3>What You Cover From Your 25%</h3>
+            <ul class="checklist">
+              <li><span class="check req">💸</span> Platform fees (Airbnb 3%, Booking 15%)</li>
+              <li><span class="check req">💸</span> Cleaning & laundry</li>
+              <li><span class="check req">💸</span> Guest communication & check-ins</li>
+              <li><span class="check req">💸</span> Channel manager software</li>
+              <li><span class="check req">💸</span> Dynamic pricing tools</li>
+              <li><span class="check warn">💡</span> Note: Maintenance/repairs = landlord's cost (specify in contract)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="tab-content" id="m2">
+        <div class="grid grid-2">
+          <div class="card warning-card">
+            <h3>Guaranteed Rent Model</h3>
+            <p>You guarantee the landlord a fixed monthly amount (e.g., RM2,500/month) regardless of occupancy. You keep all revenue above that. Higher risk for you, more attractive to landlords.</p>
+            <div style="margin-top:1rem; background:#fff3cd; border-radius:8px; padding:1rem;">
+              <div style="font-size:0.8rem; margin-bottom:0.5rem;">Example: Unit could earn RM7,000/month</div>
+              <div style="display:flex; justify-content:space-between; font-size:0.9rem;">
+                <span>You pay landlord: <strong>RM 2,500</strong></span>
+                <span>You keep: <strong>RM 4,500</strong></span>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <h3>When to Use This Model</h3>
+            <ul class="checklist">
+              <li><span class="check done">✓</span> You're confident in the unit's earning potential</li>
+              <li><span class="check done">✓</span> Landlord is skeptical about STR income</li>
+              <li><span class="check done">✓</span> It's a high-demand location (KLCC, Bukit Bintang)</li>
+              <li><span class="check done">✓</span> You have cash reserves for slow months</li>
+              <li><span class="check req">⚠️</span> Risk: You pay even during low occupancy months</li>
+              <li><span class="check req">⚠️</span> Always set guaranteed rent 20% below average LT rent</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="tab-content" id="m3">
+        <div class="grid grid-2">
+          <div class="card accent-card">
+            <h3>Hybrid Model (Best of Both)</h3>
+            <p>Guaranteed minimum + upside share. Landlord gets guaranteed floor rent + a percentage above a threshold. You take your % above the floor.</p>
+            <div style="margin-top:1rem; background:rgba(255,255,255,0.15); border-radius:8px; padding:1rem;">
+              <div style="font-size:0.8rem; margin-bottom:0.5rem;">Example structure:</div>
+              <div style="font-size:0.85rem; line-height:1.8;">
+                • Guarantee: RM 2,000/month<br>
+                • Revenue RM 2,001–6,000: 80/20 split<br>
+                • Revenue above RM 6,000: 70/30 split<br>
+                • You earn more as you perform better
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Why Landlords Love the Hybrid</h3>
+            <ul class="checklist">
+              <li><span class="check done">✓</span> They have a downside floor (peace of mind)</li>
+              <li><span class="check done">✓</span> They participate in upside (motivation)</li>
+              <li><span class="check done">✓</span> You're incentivized to maximize revenue</li>
+              <li><span class="check done">✓</span> Easy to explain & builds trust quickly</li>
+              <li><span class="check done">✓</span> Works great for first-time landlord partners</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header fade-in" style="margin-top:2rem;">
+    <h2 style="font-size:1.4rem;">The Landlord Acquisition Funnel</h2>
+  </div>
+  <div class="timeline fade-in">
+    <div class="timeline-item">
+      <div class="tl-header"><span class="tl-step">Stage 1</span><span class="tl-time">Awareness</span></div>
+      <h3>Generate Leads</h3>
+      <div class="tl-body">
+        <ul>
+          <li>Post in Facebook/Telegram property groups with a case study: "How we earned unit owner RM7,200 last month in KLCC"</li>
+          <li>Run targeted Facebook/Instagram ads to KL condo owners aged 30–55</li>
+          <li>Create a simple landing page with a lead form ("Get a free income estimate for your unit")</li>
+          <li>Partner with property agents — offer 1-month management fee as referral</li>
+        </ul>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-header"><span class="tl-step">Stage 2</span><span class="tl-time">Meeting</span></div>
+      <h3>The Discovery Call / Meeting</h3>
+      <div class="tl-body">
+        <ul>
+          <li>Present a custom <strong>Income Projection Report</strong> for their specific unit (use AirDNA / comparable listings)</li>
+          <li>Show before/after: "Your unit currently earns RM2,200/month. Our comparable unit earns RM5,800."</li>
+          <li>Address fears: damage, strangers, noise complaints — show your guest screening & insurance</li>
+          <li>Show them your management dashboard / monthly reporting they'll receive</li>
+        </ul>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-header"><span class="tl-step">Stage 3</span><span class="tl-time">Agreement</span></div>
+      <h3>Sign the Property Management Agreement</h3>
+      <div class="tl-body">
+        <ul>
+          <li><strong>Key clauses to include:</strong></li>
+          <li>Term: 12 months (auto-renew with 60-day termination notice)</li>
+          <li>Revenue split / guaranteed rent amount</li>
+          <li>Who pays for utilities, WiFi, maintenance, furniture</li>
+          <li>Guest damage policy (guest deposit collected / insurance)</li>
+          <li>Monthly reporting & payment schedule (pay by 10th of each month)</li>
+          <li>Your right to list on any platform without additional approval</li>
+          <li><strong>Always have a lawyer draft the first version — RM500–1,000 well spent</strong></li>
+        </ul>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-header"><span class="tl-step">Stage 4</span><span class="tl-time">Onboarding</span></div>
+      <h3>Unit Onboarding & Listing Setup</h3>
+      <div class="tl-body">
+        <ul>
+          <li>Professional photography (RM300–600 — the single highest ROI spend)</li>
+          <li>Deep clean & staging — declutter landlord's personal items</li>
+          <li>Install smart lock (Yale, Igloohome) for keyless check-in</li>
+          <li>Set up WiFi, guest welcome kit, house manual</li>
+          <li>Create listings on Airbnb, Booking.com, Agoda, Expedia simultaneously</li>
+          <li>Connect all listings to channel manager to avoid double-bookings</li>
+          <li>Enable dynamic pricing (PriceLabs / Wheelhouse)</li>
+        </ul>
+        <span class="cost-tag">💰 Onboarding cost: RM800–2,000 per unit (photography + supplies)</span>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-header"><span class="tl-step">Stage 5</span><span class="tl-time">Ongoing</span></div>
+      <h3>Monthly Reporting & Retention</h3>
+      <div class="tl-body">
+        <ul>
+          <li>Send monthly PDF/dashboard report: bookings, revenue, occupancy, expenses, net payout</li>
+          <li>Proactively communicate any issues before landlord asks</li>
+          <li>Annual review meeting: show growth, propose improvements</li>
+          <li>Ask for referrals once landlord is happy (their friends are also property investors!)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SECTION 5: PLATFORMS ===================== -->
+<section id="platforms">
+  <div class="section-header fade-in">
+    <div class="tag">Section 5</div>
+    <h2>Booking Platforms & Channel Strategy</h2>
+    <p>List on multiple platforms simultaneously to maximize revenue and occupancy.</p>
+  </div>
+
+  <div class="platform-grid fade-in">
+    <div class="platform-card">
+      <div class="icon" style="background:#fff;border-radius:18px;width:64px;height:64px;margin:0 auto 0.7rem;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(255,90,95,0.25);overflow:hidden;padding:8px;">
+        <img src="https://logo.clearbit.com/airbnb.com" alt="Airbnb" style="width:100%;height:100%;object-fit:contain;" onerror="this.parentNode.innerHTML='<span style=\'font-size:2rem\'>🏠</span>'">
+      </div>
+      <div class="name">Airbnb</div>
+      <div class="commission">Host fee: 3% | Guest fee: 14%</div>
+      <div class="tag-row">
+        <span class="mini-tag tag-green">Best Brand</span>
+        <span class="mini-tag tag-blue">Global</span>
+      </div>
+    </div>
+    <div class="platform-card">
+      <div class="icon" style="background:#fff;border-radius:18px;width:64px;height:64px;margin:0 auto 0.7rem;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,113,194,0.25);overflow:hidden;padding:8px;">
+        <img src="https://logo.clearbit.com/booking.com" alt="Booking.com" style="width:100%;height:100%;object-fit:contain;" onerror="this.parentNode.innerHTML='<span style=\'font-size:2rem\'>🌐</span>'">
+      </div>
+      <div class="name">Booking.com</div>
+      <div class="commission">Host commission: 15–20%</div>
+      <div class="tag-row">
+        <span class="mini-tag tag-green">High Volume</span>
+        <span class="mini-tag tag-orange">EU/Asia</span>
+      </div>
+    </div>
+    <div class="platform-card">
+      <div class="icon" style="background:#fff;border-radius:18px;width:64px;height:64px;margin:0 auto 0.7rem;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(233,30,99,0.25);overflow:hidden;padding:8px;">
+        <img src="https://logo.clearbit.com/agoda.com" alt="Agoda" style="width:100%;height:100%;object-fit:contain;" onerror="this.parentNode.innerHTML='<span style=\'font-size:2rem\'>🏨</span>'">
+      </div>
+      <div class="name">Agoda</div>
+      <div class="commission">Commission: 12–15%</div>
+      <div class="tag-row">
+        <span class="mini-tag tag-blue">SEA Focus</span>
+        <span class="mini-tag tag-green">Asian Guests</span>
+      </div>
+    </div>
+    <div class="platform-card">
+      <div class="icon" style="background:#fff;border-radius:18px;width:64px;height:64px;margin:0 auto 0.7rem;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(244,162,97,0.25);overflow:hidden;padding:8px;">
+        <img src="https://logo.clearbit.com/expedia.com" alt="Expedia" style="width:100%;height:100%;object-fit:contain;" onerror="this.parentNode.innerHTML='<span style=\'font-size:2rem\'>✈️</span>'">
+      </div>
+      <div class="name">Expedia / Hotels.com</div>
+      <div class="commission">Commission: 15–25%</div>
+      <div class="tag-row">
+        <span class="mini-tag tag-orange">Western Guests</span>
+        <span class="mini-tag tag-blue">Corporate</span>
+      </div>
+    </div>
+    <div class="platform-card">
+      <div class="icon" style="background:#fff;border-radius:18px;width:64px;height:64px;margin:0 auto 0.7rem;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(42,157,143,0.25);overflow:hidden;padding:8px;">
+        <img src="https://logo.clearbit.com/vrbo.com" alt="Vrbo" style="width:100%;height:100%;object-fit:contain;" onerror="this.parentNode.innerHTML='<span style=\'font-size:2rem\'>🛋️</span>'">
+      </div>
+      <div class="name">Vrbo</div>
+      <div class="commission">Host fee: 5–8%</div>
+      <div class="tag-row">
+        <span class="mini-tag tag-green">Family Stays</span>
+        <span class="mini-tag tag-blue">US Market</span>
+      </div>
+    </div>
+    <div class="platform-card">
+      <div class="icon" style="background:#fff;border-radius:18px;width:64px;height:64px;margin:0 auto 0.7rem;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(30,139,195,0.25);overflow:hidden;padding:8px;">
+        <img src="https://logo.clearbit.com/trip.com" alt="Trip.com" style="width:100%;height:100%;object-fit:contain;" onerror="this.parentNode.innerHTML='<span style=\'font-size:2rem\'>🌏</span>'">
+      </div>
+      <div class="name">Trip.com / Ctrip</div>
+      <div class="commission">Commission: 12–15%</div>
+      <div class="tag-row">
+        <span class="mini-tag tag-orange">Chinese Tourists</span>
+        <span class="mini-tag tag-green">Growing</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-2 fade-in" style="margin-top:1.5rem;">
+    <div class="card">
+      <h3 style="margin-bottom:1rem;">🔧 Essential Software Stack</h3>
+      <ul class="checklist">
+        <li><span class="check req">📡</span> <strong>Channel Manager:</strong> Hostaway, Guesty, Lodgify, or CloudBeds — syncs calendars & prices across all platforms</li>
+        <li><span class="check req">💲</span> <strong>Dynamic Pricing:</strong> PriceLabs or Wheelhouse — auto-adjusts prices based on demand, events, seasonality</li>
+        <li><span class="check req">💬</span> <strong>Guest Messaging:</strong> Hostaway automated messages or Smartbnb</li>
+        <li><span class="check req">🔑</span> <strong>Smart Locks:</strong> Igloohome, Yale Linus, or Schlage — guests get unique codes, no key handovers</li>
+        <li><span class="check req">🧹</span> <strong>Cleaning Management:</strong> Properly or Turno (schedule & pay cleaners, photo checklists)</li>
+        <li><span class="check req">📊</span> <strong>Analytics:</strong> AirDNA for market data, Hostaway dashboards for your portfolio</li>
+        <li><span class="check warn">💡</span> <strong>Accounting:</strong> QuickBooks or Xero integrated with Hostaway</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 style="margin-bottom:1rem;">📊 Monthly Tech Costs (per 10 units)</h3>
+      <div class="bar-chart">
+        <div class="bar-item">
+          <div class="bar-label">Channel Manager</div>
+          <div class="bar-track"><div class="bar-fill" style="width:70%;background:linear-gradient(90deg,#0d3b66,#1e8bc3);">RM 400</div></div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-label">Dynamic Pricing</div>
+          <div class="bar-track"><div class="bar-fill" style="width:30%;background:linear-gradient(90deg,#f4a261,#e76f51);">RM 180</div></div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-label">Smart Locks</div>
+          <div class="bar-track"><div class="bar-fill" style="width:25%;background:linear-gradient(90deg,#2a9d8f,#264653);">RM 150</div></div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-label">Cleaning App</div>
+          <div class="bar-track"><div class="bar-fill" style="width:20%;background:linear-gradient(90deg,#e9c46a,#f4a261);">RM 100</div></div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-label">Analytics</div>
+          <div class="bar-track"><div class="bar-fill" style="width:25%;background:linear-gradient(90deg,#6c757d,#495057);">RM 150</div></div>
+        </div>
+      </div>
+      <div style="margin-top:1rem; padding:0.8rem; background:var(--light-blue); border-radius:8px; font-size:0.85rem;">
+        <strong>Total Tech Stack: ~RM 980/month</strong> for 10 units = RM98/unit/month (very low relative to revenue)
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SECTION 6: OPERATIONS ===================== -->
+<section id="operations" style="background:var(--bg);">
+  <div class="section-header fade-in">
+    <div class="tag">Section 6</div>
+    <h2>Operations Setup</h2>
+    <p>Build systems that let you scale from 5 to 50 units without proportional headcount growth.</p>
+  </div>
+
+  <div class="grid grid-3 fade-in">
+    <div class="card">
+      <div class="feature-icon-wrap" style="background:linear-gradient(135deg,#e8f4f8,#c5e3f0);">👥</div>
+      <h3>Team Structure (First Year)</h3>
+      <ul class="checklist" style="margin-top:0.5rem;">
+        <li><span class="check req">1</span> <strong>You</strong> — Strategy, landlord relations, finance</li>
+        <li><span class="check req">2</span> <strong>Operations Manager</strong> — Guest comms, check-ins, issues (hire at 10+ units)</li>
+        <li><span class="check req">3</span> <strong>Cleaning Team</strong> — Outsource to cleaning company (RM60–120/turn)</li>
+        <li><span class="check req">4</span> <strong>Handyman</strong> — On-call, not full-time. Budget RM500/unit/month</li>
+        <li><span class="check warn">5</span> <strong>Accountant</strong> — Part-time bookkeeper RM300–600/month</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="feature-icon-wrap" style="background:linear-gradient(135deg,#d4edda,#b8dfc5);">🧹</div>
+      <h3>Cleaning Protocol</h3>
+      <ul class="checklist" style="margin-top:0.5rem;">
+        <li><span class="check done">✓</span> Partner with a reliable cleaning company (not freelancers)</li>
+        <li><span class="check done">✓</span> Turno/Properly for scheduling & photo verification</li>
+        <li><span class="check done">✓</span> Standard checklist per unit (beds, towels, toiletries restock)</li>
+        <li><span class="check done">✓</span> Linens: consider linen rental service vs. buying (RM50–80/set)</li>
+        <li><span class="check done">✓</span> Guest check-out time: 11am | Check-in: 3pm (cleaning window)</li>
+        <li><span class="check warn">!</span> Charge cleaning fee to guests on top of nightly rate</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="feature-icon-wrap" style="background:linear-gradient(135deg,#fff3cd,#fde8a0);">⭐</div>
+      <h3>Guest Experience System</h3>
+      <ul class="checklist" style="margin-top:0.5rem;">
+        <li><span class="check done">✓</span> Automated pre-arrival message (directions, check-in code)</li>
+        <li><span class="check done">✓</span> Digital welcome book (PDF via WhatsApp or Notion page)</li>
+        <li><span class="check done">✓</span> Smart lock with unique codes per booking</li>
+        <li><span class="check done">✓</span> Welcome essentials: water, coffee, snacks, toiletries</li>
+        <li><span class="check done">✓</span> Post-checkout review request message (automated)</li>
+        <li><span class="check warn">!</span> Target: 4.8+ stars on all platforms — protects rankings</li>
+      </ul>
+    </div>
+  </div>
+
+</section>
+
+<!-- ===================== SECTION 7: FINANCIALS ===================== -->
+<section id="financials">
+  <div class="section-header fade-in">
+    <div class="tag">Section 7</div>
+    <h2>Financial Projections & Calculator</h2>
+    <p>Model your revenue, costs, and profitability at different portfolio sizes.</p>
+  </div>
+
+  <div class="calc-box fade-in">
+    <h3 style="color:var(--primary); margin-bottom:1.5rem;">🧮 Portfolio Revenue Calculator</h3>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Number of Units Managed</label>
+        <input type="number" id="numUnits" value="10" min="1" max="200" onchange="calcRevenue()">
+      </div>
+      <div class="form-group">
+        <label>Average Nightly Rate (RM)</label>
+        <input type="number" id="nightlyRate" value="250" min="50" max="2000" onchange="calcRevenue()">
+      </div>
+      <div class="form-group">
+        <label>Average Occupancy Rate (%)</label>
+        <input type="number" id="occupancy" value="72" min="10" max="100" onchange="calcRevenue()">
+      </div>
+      <div class="form-group">
+        <label>Your Management Cut (%)</label>
+        <input type="number" id="yourCut" value="22" min="5" max="50" onchange="calcRevenue()">
+      </div>
+      <div class="form-group">
+        <label>Monthly Ops Cost per Unit (RM)</label>
+        <input type="number" id="opsCost" value="400" min="0" max="2000" onchange="calcRevenue()">
+      </div>
+      <div class="form-group">
+        <label>Cleaning Fee Charged to Guest (RM)</label>
+        <input type="number" id="cleanFee" value="80" min="0" max="500" onchange="calcRevenue()">
+      </div>
+    </div>
+    <button class="btn btn-glow" onclick="calcRevenue()">🧮 Calculate Revenue</button>
+    <div class="calc-result" id="calcResult">
+      <h3>Monthly Portfolio Results</h3>
+      <div class="result-grid">
+        <div class="result-item"><div class="val" id="r-gross">—</div><div class="lbl">Gross Portfolio Revenue</div></div>
+        <div class="result-item"><div class="val" id="r-mgmt">—</div><div class="lbl">Your Management Revenue</div></div>
+        <div class="result-item"><div class="val" id="r-ops">—</div><div class="lbl">Total Ops Costs</div></div>
+        <div class="result-item"><div class="val" id="r-net">—</div><div class="lbl">Your Net Profit/Month</div></div>
+        <div class="result-item"><div class="val" id="r-annual">—</div><div class="lbl">Annual Net Profit</div></div>
+        <div class="result-item"><div class="val" id="r-margin">—</div><div class="lbl">Net Margin</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-2 fade-in" style="margin-top:1.5rem;">
+    <div class="card">
+      <h3 style="margin-bottom:1rem;">💼 Startup Costs (First Unit)</h3>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th>Item</th><th>Cost (RM)</th></tr></thead>
+          <tbody>
+            <tr><td>SSM Company Registration</td><td>RM 2,500</td></tr>
+            <tr><td>Company Secretary (Year 1)</td><td>RM 2,000</td></tr>
+            <tr><td>MOTAC License</td><td>RM 300</td></tr>
+            <tr><td>DBKL Business License</td><td>RM 300</td></tr>
+            <tr><td>Legal (Management Agreement template)</td><td>RM 800</td></tr>
+            <tr><td>Smart Lock (per unit)</td><td>RM 600</td></tr>
+            <tr><td>Professional Photography</td><td>RM 400</td></tr>
+            <tr><td>Welcome Kit / Supplies</td><td>RM 300</td></tr>
+            <tr><td>Channel Manager (3 months)</td><td>RM 600</td></tr>
+            <tr><td>Website + Domain</td><td>RM 500</td></tr>
+            <tr><td>Marketing Budget (Month 1)</td><td>RM 1,000</td></tr>
+            <tr><td style="font-weight:700;">TOTAL</td><td style="font-weight:700; color:var(--accent);">RM 9,300</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card">
+      <h3 style="margin-bottom:1rem;">📈 Growth Scenario (12 months)</h3>
+      <div class="bar-chart">
+        <div class="bar-item">
+          <div class="bar-label">Month 1–2</div>
+          <div class="bar-track"><div class="bar-fill" style="width:10%;background:linear-gradient(90deg,#e76f51,#e9c46a);">2 units</div></div>
+          <div class="bar-val">-RM500</div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-label">Month 3–4</div>
+          <div class="bar-track"><div class="bar-fill" style="width:25%;background:linear-gradient(90deg,#e9c46a,#2a9d8f);">5 units</div></div>
+          <div class="bar-val">RM 1.2K</div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-label">Month 5–6</div>
+          <div class="bar-track"><div class="bar-fill" style="width:40%;background:linear-gradient(90deg,#2a9d8f,#0d3b66);">10 units</div></div>
+          <div class="bar-val">RM 4K</div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-label">Month 7–9</div>
+          <div class="bar-track"><div class="bar-fill" style="width:60%;background:linear-gradient(90deg,#0d3b66,#1e8bc3);">15 units</div></div>
+          <div class="bar-val">RM 7K</div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-label">Month 10–12</div>
+          <div class="bar-track"><div class="bar-fill" style="width:80%;background:linear-gradient(90deg,#1e8bc3,#f4a261);">20 units</div></div>
+          <div class="bar-val">RM 12K</div>
+        </div>
+      </div>
+      <div style="margin-top:1rem; padding:0.8rem; background:var(--light-blue); border-radius:8px; font-size:0.85rem;">
+        <strong>Break-even:</strong> ~Month 3 (5 units) | <strong>RM 100K/year net:</strong> ~15–20 units
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SECTION 8: ROADMAP ===================== -->
+<section id="roadmap" style="background:var(--bg);">
+  <div class="section-header fade-in">
+    <div class="tag">Section 8</div>
+    <h2>12-Month Launch Roadmap</h2>
+    <p>Your week-by-week action plan from zero to a profitable portfolio.</p>
+  </div>
+
+  <div class="phases fade-in" style="background:var(--primary); color:#fff; border-radius:12px;">
+    <div class="phase phase-active" onclick="showPhase(1)">
+      <div class="phase-num">Phase 1</div>
+      <div class="phase-name">Foundation<br><small>Month 1–2</small></div>
+    </div>
+    <div class="phase phase-upcoming" onclick="showPhase(2)">
+      <div class="phase-num">Phase 2</div>
+      <div class="phase-name">Launch<br><small>Month 2–3</small></div>
+    </div>
+    <div class="phase phase-upcoming" onclick="showPhase(3)">
+      <div class="phase-num">Phase 3</div>
+      <div class="phase-name">Scale<br><small>Month 4–8</small></div>
+    </div>
+    <div class="phase phase-upcoming" onclick="showPhase(4)">
+      <div class="phase-num">Phase 4</div>
+      <div class="phase-name">Optimize<br><small>Month 9–12</small></div>
+    </div>
+  </div>
+
+  <div id="phase-content" style="margin-top:1.5rem;">
+    <div id="phase1" class="phase-panel">
+      <div class="grid grid-2 fade-in">
+        <div class="card">
+          <h3>🏛️ Legal & Admin</h3>
+          <ul class="checklist">
+            <li><span class="check req">W1</span> Register Sdn Bhd via SSM (hire company secretary)</li>
+            <li><span class="check req">W2</span> Open business bank account (Maybank/CIMB)</li>
+            <li><span class="check req">W2</span> Register for TTx at LHDN</li>
+            <li><span class="check req">W3</span> Apply for MOTAC license</li>
+            <li><span class="check req">W3</span> Apply for DBKL business license</li>
+            <li><span class="check req">W4</span> Get lawyer to draft management agreement</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>🎯 Market Research</h3>
+          <ul class="checklist">
+            <li><span class="check req">W1</span> Identify target buildings in KL (KLCC, BB, MK)</li>
+            <li><span class="check req">W1</span> Check condo by-laws for STR permissions</li>
+            <li><span class="check req">W2</span> Research competitor pricing on Airbnb for each zone</li>
+            <li><span class="check req">W2</span> Buy AirDNA 1-month subscription for market data</li>
+            <li><span class="check req">W3</span> Build your landlord pitch deck & income projection template</li>
+            <li><span class="check req">W4</span> Set up channel manager trial (Hostaway/Guesty)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div id="phase2" class="phase-panel" style="display:none;">
+      <div class="grid grid-2 fade-in">
+        <div class="card">
+          <h3>🤝 Landlord Acquisition</h3>
+          <ul class="checklist">
+            <li><span class="check req">W5</span> Post in 10 KL property Facebook groups</li>
+            <li><span class="check req">W5</span> Contact 20 owners from PropertyGuru/iProperty</li>
+            <li><span class="check req">W6</span> Run Facebook Lead Ad: "Free Income Estimate"</li>
+            <li><span class="check req">W6</span> Meet with interested landlords, present projections</li>
+            <li><span class="check req">W7</span> Sign first 2–3 management agreements</li>
+            <li><span class="check req">W8</span> Get keys/access, set up smart locks</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>🏠 Unit Setup</h3>
+          <ul class="checklist">
+            <li><span class="check req">W7</span> Deep clean & professional photography</li>
+            <li><span class="check req">W7</span> Create Airbnb & Booking.com listings</li>
+            <li><span class="check req">W8</span> Connect to channel manager</li>
+            <li><span class="check req">W8</span> Enable PriceLabs dynamic pricing</li>
+            <li><span class="check req">W8</span> Set up automated guest messages</li>
+            <li><span class="check req">W8</span> First bookings live!</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div id="phase3" class="phase-panel" style="display:none;">
+      <div class="grid grid-2 fade-in">
+        <div class="card">
+          <h3>📈 Portfolio Growth</h3>
+          <ul class="checklist">
+            <li><span class="check req">M4</span> Reach 5+ units — hire part-time operations assistant</li>
+            <li><span class="check req">M5</span> Partner with 2 cleaning companies for redundancy</li>
+            <li><span class="check req">M5</span> Collect landlord testimonials for marketing</li>
+            <li><span class="check req">M6</span> Target 10 units — set up team WhatsApp / Slack</li>
+            <li><span class="check req">M7</span> Add Agoda and Expedia to platform mix</li>
+            <li><span class="check req">M8</span> Explore direct booking website (saves 15% commission)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>🌐 Digital Presence</h3>
+          <ul class="checklist">
+            <li><span class="check req">M4</span> Launch professional website with portfolio showcase</li>
+            <li><span class="check req">M4</span> Instagram/Facebook page for brand building</li>
+            <li><span class="check req">M5</span> Google My Business listing</li>
+            <li><span class="check req">M6</span> Start content: "KL Travel Tips" to attract guest organic traffic</li>
+            <li><span class="check req">M7</span> Build email list of past guests for direct bookings</li>
+            <li><span class="check req">M8</span> Launch referral program for landlords</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div id="phase4" class="phase-panel" style="display:none;">
+      <div class="grid grid-2 fade-in">
+        <div class="card">
+          <h3>⚙️ Systems & Optimization</h3>
+          <ul class="checklist">
+            <li><span class="check done">✓</span> Full automation of guest communications</li>
+            <li><span class="check done">✓</span> Monthly landlord reporting dashboard (auto-generated)</li>
+            <li><span class="check done">✓</span> Revenue management review every 2 weeks</li>
+            <li><span class="check done">✓</span> SOPs documented for every process</li>
+            <li><span class="check done">✓</span> Operations manager hired full-time</li>
+            <li><span class="check warn">!</span> Explore: Corporrate housing contracts (long-stay clients)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>🎯 Year 2 Vision</h3>
+          <ul class="checklist">
+            <li><span class="check req">Q1</span> Target 30–50 units</li>
+            <li><span class="check req">Q1</span> Apply for bank financing for your own units (arbitrage model)</li>
+            <li><span class="check req">Q2</span> Consider franchise model or expand to Penang/JB</li>
+            <li><span class="check req">Q2</span> Build your own direct booking platform</li>
+            <li><span class="check req">Q3</span> Corporate partnerships: MNCs needing serviced apartments</li>
+            <li><span class="check req">Q4</span> Aim for RM 500K+ annual net revenue</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESOURCES -->
+  <div class="section-header fade-in" style="margin-top:3rem;">
+    <h2 style="font-size:1.4rem;">📚 Key Resources & Contacts</h2>
+  </div>
+  <div class="grid grid-3 fade-in">
+    <div class="card">
+      <h3>🏛️ Government Portals</h3>
+      <ul style="font-size:0.85rem; padding-left:1rem; color:var(--muted); line-height:2;">
+        <li><strong>SSM:</strong> mycoid.ssm.com.my</li>
+        <li><strong>MOTAC:</strong> eservices.motac.gov.my</li>
+        <li><strong>LHDN:</strong> mytax.hasil.gov.my</li>
+        <li><strong>DBKL:</strong> edbkl.dbkl.gov.my</li>
+        <li><strong>JPDP (PDPA):</strong> jpdp.gov.my</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>🔧 Recommended Tools</h3>
+      <ul style="font-size:0.85rem; padding-left:1rem; color:var(--muted); line-height:2;">
+        <li><strong>Channel Manager:</strong> hostaway.com</li>
+        <li><strong>Pricing:</strong> pricelabs.co</li>
+        <li><strong>Market Data:</strong> airdna.co</li>
+        <li><strong>Cleaning:</strong> turno.com</li>
+        <li><strong>Smart Lock:</strong> igloohome.co</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>📖 Communities to Join</h3>
+      <ul style="font-size:0.85rem; padding-left:1rem; color:var(--muted); line-height:2;">
+        <li>Airbnb Malaysia Hosts (Facebook)</li>
+        <li>KL Property Investors (Facebook)</li>
+        <li>Malaysia STR Association</li>
+        <li>BiggerPockets (global)</li>
+        <li>STR Malaysia WhatsApp groups</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="alert alert-success fade-in" style="margin-top:2rem;">
+    <span class="alert-icon">🚀</span>
+    <div><strong>Ready to Start?</strong> The single best first action: contact 10 condo owners in one building this week with a personalised income projection. Your first signed management agreement is the hardest — everything after that is proof and referrals.</div>
+  </div>
+</section>
+
+<footer style="background:var(--primary); color:rgba(255,255,255,0.75); padding:3rem 2rem 2rem; margin-top:4rem;">
+  <div style="max-width:1100px; margin:0 auto;">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:2rem; margin-bottom:2rem;">
+      <div>
+        <div style="font-size:1.2rem; font-weight:800; color:#fff; margin-bottom:0.8rem;">🏠 KL <span style="color:var(--accent)">Holiday Homes</span> Guide</div>
+        <p style="font-size:0.82rem; line-height:1.7;">Complete blueprint for launching a profitable short-term rental management business in Kuala Lumpur, Malaysia.</p>
+      </div>
+      <div>
+        <div style="font-weight:700; color:#fff; margin-bottom:0.8rem; font-size:0.9rem;">🏛️ Key Authorities</div>
+        <ul style="list-style:none; font-size:0.8rem; line-height:2.2;">
+          <li>📋 SSM — mycoid.ssm.com.my</li>
+          <li>🏨 MOTAC — eservices.motac.gov.my</li>
+          <li>💰 LHDN — mytax.hasil.gov.my</li>
+          <li>🏙️ DBKL — edbkl.dbkl.gov.my</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-weight:700; color:#fff; margin-bottom:0.8rem; font-size:0.9rem;">📊 Quick Stats</div>
+        <ul style="list-style:none; font-size:0.8rem; line-height:2.2;">
+          <li>🌟 Avg. Nightly Rate: <strong style="color:var(--accent)">RM 150–400</strong></li>
+          <li>📈 KL Avg. Occupancy: <strong style="color:var(--accent)">70–82%</strong></li>
+          <li>💼 Mgmt Cut: <strong style="color:var(--accent)">20–25%</strong></li>
+          <li>🚀 Break-even: <strong style="color:var(--accent)">~Month 3</strong></li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-weight:700; color:#fff; margin-bottom:0.8rem; font-size:0.9rem;">🔧 Essential Tools</div>
+        <ul style="list-style:none; font-size:0.8rem; line-height:2.2;">
+          <li>📡 Hostaway / Guesty</li>
+          <li>💲 PriceLabs / Wheelhouse</li>
+          <li>📊 AirDNA</li>
+          <li>🔑 Igloohome Smart Locks</li>
+        </ul>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,0.12); padding-top:1.2rem; text-align:center; font-size:0.78rem;">
+      <strong style="color:var(--accent)">KL Holiday Homes Business Blueprint</strong> — Information current as of 2025–2026.
+      Always verify regulatory requirements with SSM, MOTAC, and LHDN directly. 🇲🇾
+    </div>
+  </div>
+</footer>
+
+<script>
+// NAV
+function toggleMenu() {
+  document.getElementById('navList').classList.toggle('open');
+}
+function setActive(el) {
+  document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('navList').classList.remove('open');
+}
+
+// TABS
+function switchTab(targetId, containerId) {
+  const container = document.getElementById(containerId);
+  container.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+  document.getElementById(targetId).classList.add('active');
+  const navEl = container.previousElementSibling;
+  navEl.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
+}
+
+// ZONES
+function selectZone(el, zone) {
+  document.querySelectorAll('.zone-card').forEach(z => z.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+// PHASES
+function showPhase(num) {
+  document.querySelectorAll('.phase-panel').forEach(p => p.style.display = 'none');
+  document.getElementById('phase' + num).style.display = 'block';
+  const phases = document.querySelectorAll('.phase');
+  phases.forEach((p, i) => {
+    p.classList.remove('phase-active', 'phase-done', 'phase-upcoming');
+    if (i + 1 < num) p.classList.add('phase-done');
+    else if (i + 1 === num) p.classList.add('phase-active');
+    else p.classList.add('phase-upcoming');
+  });
+}
+
+// CALCULATOR
+function fmt(n) {
+  return 'RM ' + Math.round(n).toLocaleString('en-MY');
+}
+function fmtPct(n) {
+  return n.toFixed(1) + '%';
+}
+function calcRevenue() {
+  const units = parseFloat(document.getElementById('numUnits').value) || 10;
+  const nightly = parseFloat(document.getElementById('nightlyRate').value) || 250;
+  const occ = parseFloat(document.getElementById('occupancy').value) / 100 || 0.72;
+  const cut = parseFloat(document.getElementById('yourCut').value) / 100 || 0.22;
+  const opsCostPerUnit = parseFloat(document.getElementById('opsCost').value) || 400;
+  const cleanFee = parseFloat(document.getElementById('cleanFee').value) || 80;
+
+  const daysPerMonth = 30;
+  const nightsBooked = daysPerMonth * occ;
+  const turnovers = nightsBooked / 3; // avg 3-night stay
+
+  const grossPerUnit = nightly * nightsBooked + cleanFee * turnovers;
+  const totalGross = grossPerUnit * units;
+  const mgmtRevenue = totalGross * cut;
+  const cleaningCost = 100 * turnovers * units; // RM100 cleaning cost vs cleanFee charged
+  const totalOps = opsCostPerUnit * units + cleaningCost;
+  const netProfit = mgmtRevenue - totalOps;
+  const annualNet = netProfit * 12;
+  const margin = mgmtRevenue > 0 ? (netProfit / mgmtRevenue) * 100 : 0;
+
+  document.getElementById('r-gross').textContent = fmt(totalGross);
+  document.getElementById('r-mgmt').textContent = fmt(mgmtRevenue);
+  document.getElementById('r-ops').textContent = fmt(totalOps);
+  document.getElementById('r-net').textContent = fmt(netProfit);
+  document.getElementById('r-annual').textContent = fmt(annualNet);
+  document.getElementById('r-margin').textContent = fmtPct(margin);
+}
+
+// Run calc on load
+calcRevenue();
+
+// SCROLL PROGRESS BAR + BACK TO TOP
+const progressBar = document.getElementById('scrollProgress');
+const backToTop = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+  if (progressBar) progressBar.style.width = pct + '%';
+  if (backToTop) {
+    if (scrollTop > 400) backToTop.classList.add('visible');
+    else backToTop.classList.remove('visible');
+  }
+});
+
+// ACTIVE NAV ON SCROLL
+const sections = document.querySelectorAll('section[id]');
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY + 80;
+  sections.forEach(sec => {
+    if (scrollY >= sec.offsetTop && scrollY < sec.offsetTop + sec.offsetHeight) {
+      document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+      const link = document.querySelector(`nav a[href="#${sec.id}"]`);
+      if (link) link.classList.add('active');
+    }
+  });
+});
+
+// ANIMATED NUMBER COUNTER
+function animateCounter(el) {
+  const target = parseFloat(el.dataset.count);
+  const prefix = el.dataset.prefix || '';
+  const suffix = el.dataset.suffix || '';
+  const duration = 1800;
+  const start = performance.now();
+  const isDecimal = target % 1 !== 0;
+  function step(now) {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    const ease = 1 - Math.pow(1 - progress, 3);
+    const current = target * ease;
+    let display;
+    if (target >= 1000) {
+      display = prefix + Math.round(current).toLocaleString('en-MY') + suffix;
+    } else if (isDecimal) {
+      display = prefix + current.toFixed(1) + suffix;
+    } else {
+      display = prefix + Math.round(current) + suffix;
+    }
+    el.textContent = display;
+    if (progress < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+// ANIMATED BAR CHARTS — store original widths then animate on scroll
+function initBarCharts() {
+  document.querySelectorAll('.bar-fill').forEach(bar => {
+    const style = bar.getAttribute('style') || '';
+    const match = style.match(/width:\s*([\d.]+)%/);
+    if (match) {
+      bar.dataset.targetWidth = match[1];
+      bar.style.width = '0%';
+    }
+  });
+}
+
+function animateBarsInView(entries, obs) {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const bars = entry.target.querySelectorAll('.bar-fill[data-target-width]');
+      bars.forEach((bar, i) => {
+        setTimeout(() => {
+          bar.style.width = bar.dataset.targetWidth + '%';
+        }, i * 120);
+      });
+      obs.unobserve(entry.target);
+    }
+  });
+}
+
+initBarCharts();
+const barObserver = new IntersectionObserver(animateBarsInView, { threshold: 0.2 });
+document.querySelectorAll('.bar-chart').forEach(chart => barObserver.observe(chart));
+
+// FADE IN ON SCROLL + COUNTER TRIGGER
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      // Trigger counters inside this element
+      e.target.querySelectorAll('[data-count]').forEach(el => animateCounter(el));
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Also trigger counters in stats-strip (not fade-in)
+const stripObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.count-up[data-count]').forEach(el => animateCounter(el));
+      stripObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.2 });
+document.querySelectorAll('.stats-strip').forEach(el => stripObserver.observe(el));
+
+</script>
+</body>
+</html>
